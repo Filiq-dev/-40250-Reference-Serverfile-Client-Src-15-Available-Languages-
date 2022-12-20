@@ -60,10 +60,10 @@ class CItem : public CEntity
 		bool		SetCount(DWORD count);
 		DWORD		GetCount();
 
-		// GetVnum°ú GetOriginalVnum¿¡ ´ëÇÑ comment
-		// GetVnumÀº Masking µÈ VnumÀÌ´Ù. ÀÌ¸¦ »ç¿ëÇÔÀ¸·Î½á, ¾ÆÀÌÅÛÀÇ ½ÇÁ¦ VnumÀº 10ÀÌÁö¸¸, VnumÀÌ 20ÀÎ °ÍÃ³·³ µ¿ÀÛÇÒ ¼ö ÀÖ´Â °ÍÀÌ´Ù.
-		// Masking °ªÀº ori_to_new.txt¿¡¼­ Á¤ÀÇµÈ °ªÀÌ´Ù.
-		// GetOriginalVnumÀº ¾ÆÀÌÅÛ °íÀ¯ÀÇ VnumÀ¸·Î, ·Î±× ³²±æ ¶§, Å¬¶óÀÌ¾ðÆ®¿¡ ¾ÆÀÌÅÛ Á¤º¸ º¸³¾ ¶§, ÀúÀåÇÒ ¶§´Â ÀÌ VnumÀ» »ç¿ëÇÏ¿©¾ß ÇÑ´Ù.
+		// GetVnumï¿½ï¿½ GetOriginalVnumï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ comment
+		// GetVnumï¿½ï¿½ Masking ï¿½ï¿½ Vnumï¿½Ì´ï¿½. ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Vnumï¿½ï¿½ 10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, Vnumï¿½ï¿½ 20ï¿½ï¿½ ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½.
+		// Masking ï¿½ï¿½ï¿½ï¿½ ori_to_new.txtï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Çµï¿½ ï¿½ï¿½ï¿½Ì´ï¿½.
+		// GetOriginalVnumï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Vnumï¿½ï¿½ï¿½ï¿½, ï¿½Î±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Vnumï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
 		// 
 		DWORD		GetVnum() const		{ return m_dwMaskVnum ? m_dwMaskVnum : m_dwVnum;	}
 		DWORD		GetOriginalVnum() const		{ return m_dwVnum;	}
@@ -103,7 +103,7 @@ class CItem : public CEntity
 
 		bool		IsPolymorphItem();
 
-		void		ModifyPoints(bool bAdd);	// ¾ÆÀÌÅÛÀÇ È¿°ú¸¦ Ä³¸¯ÅÍ¿¡ ºÎ¿© ÇÑ´Ù. bAdd°¡ falseÀÌ¸é Á¦°ÅÇÔ
+		void		ModifyPoints(bool bAdd);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½Î¿ï¿½ ï¿½Ñ´ï¿½. bAddï¿½ï¿½ falseï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		bool		CreateSocket(BYTE bSlot, BYTE bGold);
 		const long *	GetSockets()		{ return &m_alSockets[0];	}
@@ -146,7 +146,7 @@ class CItem : public CEntity
 
 		DWORD		GetLastOwnerPID()	{ return m_dwLastOwnerPID; }
 
-		int		GetAttributeSetIndex(); // ¼Ó¼º ºÙ´Â°ÍÀ» ÁöÁ¤ÇÑ ¹è¿­ÀÇ ¾î´À ÀÎµ¦½º¸¦ »ç¿ëÇÏ´ÂÁö µ¹·ÁÁØ´Ù.
+		int		GetAttributeSetIndex(); // ï¿½Ó¼ï¿½ ï¿½Ù´Â°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
 		void		AlterToMagicItem();
 		void		AlterToSocketItem(int iSocketCount);
 
@@ -165,7 +165,7 @@ class CItem : public CEntity
 		void		StopTimerBasedOnWearExpireEvent();
 		void		StopAccessorySocketExpireEvent();
 
-		//			ÀÏ´Ü REAL_TIME°ú TIMER_BASED_ON_WEAR ¾ÆÀÌÅÛ¿¡ ´ëÇØ¼­¸¸ Á¦´ë·Î µ¿ÀÛÇÔ.
+		//			ï¿½Ï´ï¿½ REAL_TIMEï¿½ï¿½ TIMER_BASED_ON_WEAR ï¿½ï¿½ï¿½ï¿½ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		int			GetDuration();
 
 		int		GetAttributeCount();
@@ -180,7 +180,7 @@ class CItem : public CEntity
 		bool	IsSameSpecialGroup(const LPITEM item) const;
 
 		// ACCESSORY_REFINE
-		// ¾×¼¼¼­¸®¿¡ ±¤»êÀ» ÅëÇØ ¼ÒÄÏÀ» Ãß°¡
+		// ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 		bool		IsAccessoryForSocket();
 
 		int		GetAccessorySocketGrade();
@@ -193,7 +193,7 @@ class CItem : public CEntity
 
 		void		AccessorySocketDegrade();
 
-		// ¾Ç¼¼»ç¸® ¸¦ ¾ÆÀÌÅÛ¿¡ ¹Û¾ÒÀ»¶§ Å¸ÀÌ¸Ó µ¹¾Æ°¡´Â°Í( ±¸¸®, µî )
+		// ï¿½Ç¼ï¿½ï¿½ç¸® ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Û¿ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½Â°ï¿½( ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ )
 		void		StartAccessorySocketExpireEvent();
 		void		SetAccessorySocketExpireEvent(LPEVENT pkEvent);
 
@@ -227,7 +227,7 @@ class CItem : public CEntity
 
 	protected:
 		friend class CInputDB;
-		bool		OnAfterCreatedItem();			// ¼­¹ö»ó¿¡ ¾ÆÀÌÅÛÀÌ ¸ðµç Á¤º¸¿Í ÇÔ²² ¿ÏÀüÈ÷ »ý¼º(·Îµå)µÈ ÈÄ ºÒ¸®¿ì´Â ÇÔ¼ö.
+		bool		OnAfterCreatedItem();			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô²ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Îµï¿½)ï¿½ï¿½ ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½.
 
 	public:
 		bool		IsRideItem();
@@ -236,47 +236,42 @@ class CItem : public CEntity
 		void		ClearMountAttributeAndAffect();
 		bool		IsNewMountItem();
 
-#ifdef __AUCTION__
-		// °æ¸ÅÀå
-		bool		MoveToAuction ();
-		void		CopyToRawData (TPlayerItem* item);
-#endif
-		// µ¶ÀÏ¿¡¼­ ±âÁ¸ Ä³½Ã ¾ÆÀÌÅÛ°ú °°Áö¸¸, ±³È¯ °¡´ÉÇÑ Ä³½Ã ¾ÆÀÌÅÛÀ» ¸¸µç´Ù°í ÇÏ¿©,
-		// ¿À¸®Áö³Î ¾ÆÀÌÅÛ¿¡, ±³È¯ ±ÝÁö ÇÃ·¡±×¸¸ »èÁ¦ÇÑ »õ·Î¿î ¾ÆÀÌÅÛµéÀ» »õ·Î¿î ¾ÆÀÌÅÛ ´ë¿ª¿¡ ÇÒ´çÇÏ¿´´Ù.
-		// ¹®Á¦´Â »õ·Î¿î ¾ÆÀÌÅÛµµ ¿À¸®Áö³Î ¾ÆÀÌÅÛ°ú °°Àº È¿°ú¸¦ ³»¾ßÇÏ´Âµ¥,
-		// ¼­¹ö°Ç, Å¬¶ó°Ç, vnum ±â¹ÝÀ¸·Î µÇ¾îÀÖ¾î
-		// »õ·Î¿î vnumÀ» ÁË´Ù ¼­¹ö¿¡ »õ·Î ´Ù ¹Ú¾Æ¾ßÇÏ´Â ¾ÈÅ¸±î¿î »óÈ²¿¡ ¸Â´ê¾Ò´Ù.
-		// ±×·¡¼­ »õ vnumÀÇ ¾ÆÀÌÅÛÀÌ¸é, ¼­¹ö¿¡¼­ µ¹¾Æ°¥ ¶§´Â ¿À¸®Áö³Î ¾ÆÀÌÅÛ vnumÀ¸·Î ¹Ù²ã¼­ µ¹°í ÇÏ°í,
-		// ÀúÀåÇÒ ¶§¿¡ º»·¡ vnumÀ¸·Î ¹Ù²ãÁÖµµ·Ï ÇÑ´Ù.
+		// ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Û°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ù°ï¿½ ï¿½Ï¿ï¿½,
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Û¿ï¿½, ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ûµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë¿ªï¿½ï¿½ ï¿½Ò´ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½.
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Û°ï¿½ ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Âµï¿½,
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, Å¬ï¿½ï¿½ï¿½, vnum ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Ö¾ï¿½
+		// ï¿½ï¿½ï¿½Î¿ï¿½ vnumï¿½ï¿½ ï¿½Ë´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ú¾Æ¾ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½È²ï¿½ï¿½ ï¿½Â´ï¿½Ò´ï¿½.
+		// ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ vnumï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ vnumï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ã¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½,
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ vnumï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½Öµï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
 
-		// Mask vnumÀº ¾î¶² ÀÌÀ¯(ex. À§ÀÇ »óÈ²)·Î ÀÎÇØ vnumÀÌ ¹Ù²î¾î µ¹¾Æ°¡´Â ¾ÆÀÌÅÛÀ» À§ÇØ ÀÖ´Ù.
+		// Mask vnumï¿½ï¿½ ï¿½î¶² ï¿½ï¿½ï¿½ï¿½(ex. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ vnumï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.
 		void		SetMaskVnum(DWORD vnum)	{	m_dwMaskVnum = vnum; }
 		DWORD		GetMaskVnum()			{	return m_dwMaskVnum; }
 		bool		IsMaskedItem()	{	return m_dwMaskVnum != 0;	}
 
-		// ¿ëÈ¥¼®
+		// ï¿½ï¿½È¥ï¿½ï¿½
 		bool		IsDragonSoul();
 		int		GiveMoreTime_Per(float fPercent);
 		int		GiveMoreTime_Fix(DWORD dwTime);
 
 	private:
-		TItemTable const * m_pProto;		// ÇÁ·ÎÅä Å¸ÀÙ
+		TItemTable const * m_pProto;		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½
 
 		DWORD		m_dwVnum;
 		LPCHARACTER	m_pOwner;
 
-		BYTE		m_bWindow;		// ÇöÀç ¾ÆÀÌÅÛÀÌ À§Ä¡ÇÑ À©µµ¿ì 
-		DWORD		m_dwID;			// °íÀ¯¹øÈ£
-		bool		m_bEquipped;	// ÀåÂø µÇ¾ú´Â°¡?
+		BYTE		m_bWindow;		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+		DWORD		m_dwID;			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+		bool		m_bEquipped;	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Â°ï¿½?
 		DWORD		m_dwVID;		// VID
-		WORD		m_wCell;		// À§Ä¡
-		DWORD		m_dwCount;		// °³¼ö
-		long		m_lFlag;		// Ãß°¡ flag
-		DWORD		m_dwLastOwnerPID;	// ¸¶Áö¸· °¡Áö°í ÀÖ¾ú´ø »ç¶÷ÀÇ PID
+		WORD		m_wCell;		// ï¿½ï¿½Ä¡
+		DWORD		m_dwCount;		// ï¿½ï¿½ï¿½ï¿½
+		long		m_lFlag;		// ï¿½ß°ï¿½ flag
+		DWORD		m_dwLastOwnerPID;	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ PID
 
-		bool		m_bExchanging;	///< ÇöÀç ±³È¯Áß »óÅÂ 
+		bool		m_bExchanging;	///< ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 
-		long		m_alSockets[ITEM_SOCKET_MAX_NUM];	// ¾ÆÀÌÅÛ ¼ÒÄ¹
+		long		m_alSockets[ITEM_SOCKET_MAX_NUM];	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¹
 		TPlayerItemAttribute	m_aAttr[ITEM_ATTRIBUTE_MAX_NUM];
 
 		LPEVENT		m_pkDestroyEvent;

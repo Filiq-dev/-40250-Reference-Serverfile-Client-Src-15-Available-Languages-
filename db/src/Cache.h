@@ -29,7 +29,7 @@ class CPlayerTableCache : public cache<TPlayerTable>
 // MYSHOP_PRICE_LIST
 /**
  * @class	CItemPriceListTableCache
- * @brief	°³ÀÎ»óÁ¡ÀÇ ¾ÆÀÌÅÛ °¡°ÝÁ¤º¸ ¸®½ºÆ®¿¡ ´ëÇÑ Ä³½Ã class
+ * @brief	ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ class
  * @version	05/06/10 Bang2ni - First release.
  */
 class CItemPriceListTableCache : public cache< TItemPriceListTable >
@@ -38,60 +38,24 @@ class CItemPriceListTableCache : public cache< TItemPriceListTable >
 
 	/// Constructor
 	/**
-	 * Ä³½Ã ¸¸·á ½Ã°£À» ¼³Á¤ÇÑ´Ù.
+	 * Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 */
 	CItemPriceListTableCache(void);
 
-	/// ¸®½ºÆ® °»½Å
+	/// ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 	/**
-	 * @param [in]	pUpdateList °»½ÅÇÒ ¸®½ºÆ®
+	 * @param [in]	pUpdateList ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	 *
-	 * Ä³½ÃµÈ °¡°ÝÁ¤º¸¸¦ °»½ÅÇÑ´Ù.
-	 * °¡°ÝÁ¤º¸ ¸®½ºÆ®°¡ °¡µæ Ã¡À» °æ¿ì ±âÁ¸¿¡ Ä³½ÌµÈ Á¤º¸µéÀ» µÚ¿¡¼­ ºÎÅÍ »èÁ¦ÇÑ´Ù.
+	 * Ä³ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¡ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 */
 	void	UpdateList(const TItemPriceListTable* pUpdateList);
 
-	/// °¡°ÝÁ¤º¸¸¦ DB ¿¡ ±â·ÏÇÑ´Ù.
+	/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DB ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	virtual void	OnFlush(void);
 
     private:
 
 	static const int	s_nMinFlushSec;		///< Minimum cache expire time
 };
-// END_OF_MYSHOP_PRICE_LIST
-#ifdef __AUCTION__
-
-class CAuctionItemInfoCache : public cache <TAuctionItemInfo>
-{
-public:
-	typedef TWishItemInfo value_type;
-	CAuctionItemInfoCache();
-	virtual ~CAuctionItemInfoCache();
-
-	void Delete();
-	virtual void OnFlush();
-};
-
-class CSaleItemInfoCache : public cache <TSaleItemInfo>
-{
-public:
-	typedef TWishItemInfo value_type;
-	CSaleItemInfoCache();
-	virtual ~CSaleItemInfoCache();
-
-	void Delete();
-	virtual void OnFlush();
-};
-
-class CWishItemInfoCache : public cache <TWishItemInfo>
-{
-public:
-	typedef TWishItemInfo value_type;
-	CWishItemInfoCache();
-	virtual ~CWishItemInfoCache();
-
-	void Delete();
-	virtual void OnFlush();
-};
-#endif
 #endif
