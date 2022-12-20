@@ -7,7 +7,6 @@
 
 #include "../../common/stl.h"
 #include "../../common/building.h"
-#include "../../common/auction_table.h"
 
 #include "Peer.h"
 #include "DBManager.h"
@@ -171,8 +170,8 @@ class CClientManager : public CNetBase, public singleton<CClientManager>
     private:
 	bool		InitializeTables();
 	bool		InitializeShopTable();
-	bool		InitializeMobTable();
-	bool		InitializeItemTable();
+	bool		InitializeMobTable(bool sql);
+	bool		InitializeItemTable(bool sql);
 	bool		InitializeQuestItemTable();
 	bool		InitializeSkillTable();
 	bool		InitializeRefineTable();

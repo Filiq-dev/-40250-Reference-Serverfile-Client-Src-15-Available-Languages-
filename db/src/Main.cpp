@@ -26,6 +26,7 @@ std::string g_stPlayerDBName = "";
 
 bool g_bHotBackup = false;
 BOOL g_test_server = false;
+BOOL g_noTXT = false;
 
 //���� ��
 int g_iPlayerCacheFlushSeconds = 60*7;
@@ -124,6 +125,9 @@ void emptybeat(LPHEART heart, int pulse)
 //
 int Start()
 {
+	int tmpValue;
+	char szBuf[256+1];
+
 	if (!CConfig::instance().LoadFile("conf.txt"))
 	{
 		fprintf(stderr, "Loading conf.txt failed.\n");
@@ -140,25 +144,19 @@ int Start()
 	if (!CConfig::instance().GetValue("LOG", &g_log))
 	{
 		fprintf(stderr, "Log Off");
-		g_log= 0;
 	}
 	else
-	{
-		g_log = 1;
 		fprintf(stderr, "Log On");
-	}
 	
-	
-	int tmpValue;
-
-	int heart_beat = 50;
-	if (!CConfig::instance().GetValue("CLIENT_HEART_FPS", &heart_beat))
+	if (!CConfig::instance().GetValue("CLIENT_HEART_FPS", &tmpValue))
 	{
 		fprintf(stderr, "Cannot find CLIENT_HEART_FPS configuration.\n");
 		return false;
 	}
 
+	thecore_init(tmpValue, emptybeat);
 	log_set_expiration_days(3);
+	signal_timer_enable(60);
 
 	if (CConfig::instance().GetValue("LOG_KEEP_DAYS", &tmpValue))
 	{
@@ -167,33 +165,23 @@ int Start()
 		fprintf(stderr, "Setting log keeping days to %d\n", tmpValue);
 	}
 
-	thecore_init(heart_beat, emptybeat);
-	signal_timer_enable(60);
-
-	char szBuf[256+1];
-
 	if (CConfig::instance().GetValue("LOCALE", szBuf, 256))
 	{
 		g_stLocale = szBuf;
 		sys_log(0, "LOCALE set to %s", g_stLocale.c_str());
-
-		// CHINA_DISABLE_HOTBACKUP
-		if ("gb2312" == g_stLocale)
-		{
-			sys_log(0, "CIBN_LOCALE: DISABLE_HOTBACKUP");
-			g_bHotBackup = false;
-		}
-		// END_OF_CHINA_DISABLE_HOTBACKUP
 	}
 
 	int iDisableHotBackup;
-	if (CConfig::instance().GetValue("DISABLE_HOTBACKUP", &iDisableHotBackup))
+	if (CConfig::instance().GetValue("DISABLE_HOTBACKUP", &tmpValue))
 	{
-		if (iDisableHotBackup)
-		{	
-			sys_log(0, "CONFIG: DISABLE_HOTBACKUP");
-			g_bHotBackup = false;
-		}
+		sys_log(0, "CONFIG: DISABLE_HOTBACKUP %s", tmpValue ? "TRUE" : "FALSE");
+		g_bHotBackup = tmpValue;
+	}
+
+	if (CConfig::instance().GetValue("NO_TXT", &tmpValue))
+	{
+		sys_log(0, "CONFIG: DISABLE_HOTBACKUP %s", tmpValue ? "TRUE" : "FALSE");
+		g_noTXT = tmpValue;
 	}
 
 
@@ -205,40 +193,40 @@ int Start()
 
 	SetTablePostfix(szBuf);
 
-	if (CConfig::instance().GetValue("PLAYER_CACHE_FLUSH_SECONDS", szBuf, 256))
+	if (CConfig::instance().GetValue("PLAYER_CACHE_FLUSH_SECONDS", &tmpValue))
 	{
-		str_to_number(g_iPlayerCacheFlushSeconds, szBuf);
+		g_iPlayerCacheFlushSeconds = tmpValue;
 		sys_log(0, "PLAYER_CACHE_FLUSH_SECONDS: %d", g_iPlayerCacheFlushSeconds);
 	}
 
-	if (CConfig::instance().GetValue("ITEM_CACHE_FLUSH_SECONDS", szBuf, 256))
+	if (CConfig::instance().GetValue("ITEM_CACHE_FLUSH_SECONDS", &tmpValue))
 	{
-		str_to_number(g_iItemCacheFlushSeconds, szBuf);
+		g_iItemCacheFlushSeconds = tmpValue;
 		sys_log(0, "ITEM_CACHE_FLUSH_SECONDS: %d", g_iItemCacheFlushSeconds);
 	}
 
 	// MYSHOP_PRICE_LIST
-	if (CConfig::instance().GetValue("ITEM_PRICELIST_CACHE_FLUSH_SECONDS", szBuf, 256)) 
+	if (CConfig::instance().GetValue("ITEM_PRICELIST_CACHE_FLUSH_SECONDS", &tmpValue)) 
 	{
-		str_to_number(g_iItemPriceListTableCacheFlushSeconds, szBuf);
+		g_iItemPriceListTableCacheFlushSeconds = tmpValue;
 		sys_log(0, "ITEM_PRICELIST_CACHE_FLUSH_SECONDS: %d", g_iItemPriceListTableCacheFlushSeconds);
 	}
 	// END_OF_MYSHOP_PRICE_LIST
 	//
-	if (CConfig::instance().GetValue("CACHE_FLUSH_LIMIT_PER_SECOND", szBuf, 256))
+	if (CConfig::instance().GetValue("CACHE_FLUSH_LIMIT_PER_SECOND", &tmpValue))
 	{
-		DWORD dwVal = 0; str_to_number(dwVal, szBuf);
+		DWORD dwVal = tmpValue; 
 		CClientManager::instance().SetCacheFlushCountLimit(dwVal);
+		sys_log(0, "CACHE_FLUSH_LIMIT_PER_SECOND: %d", dwVal);
 	}
 
-	int iIDStart;
-	if (!CConfig::instance().GetValue("PLAYER_ID_START", &iIDStart))
+	if (!CConfig::instance().GetValue("PLAYER_ID_START", &tmpValue))
 	{
 		sys_err("PLAYER_ID_START not configured");
 		return false;
 	}
 
-	CClientManager::instance().SetPlayerIDStart(iIDStart);
+	CClientManager::instance().SetPlayerIDStart(tmpValue);
 
 	if (CConfig::instance().GetValue("NAME_COLUMN", szBuf, 256))
 	{
@@ -248,11 +236,10 @@ int Start()
 
 	char szAddr[64], szDB[64], szUser[64], szPassword[64];
 	int iPort;
-	char line[256+1];
 
-	if (CConfig::instance().GetValue("SQL_PLAYER", line, 256))
+	if (CConfig::instance().GetValue("SQL_PLAYER", szBuf, 256))
 	{
-		sscanf(line, " %s %s %s %s %d ", szAddr, szDB, szUser, szPassword, &iPort);
+		sscanf(szBuf, " %s %s %s %s %d ", szAddr, szDB, szUser, szPassword, &iPort);
 		sys_log(0, "connecting to MySQL server (player)");
 
 		int iRetry = 5;
@@ -278,9 +265,9 @@ int Start()
 		return false;
 	}
 
-	if (CConfig::instance().GetValue("SQL_ACCOUNT", line, 256))
+	if (CConfig::instance().GetValue("SQL_ACCOUNT", szBuf, 256))
 	{
-		sscanf(line, " %s %s %s %s %d ", szAddr, szDB, szUser, szPassword, &iPort);
+		sscanf(szBuf, " %s %s %s %s %d ", szAddr, szDB, szUser, szPassword, &iPort);
 		sys_log(0, "connecting to MySQL server (account)");
 
 		int iRetry = 5;
@@ -305,9 +292,9 @@ int Start()
 		return false;
 	}
 
-	if (CConfig::instance().GetValue("SQL_COMMON", line, 256))
+	if (CConfig::instance().GetValue("SQL_COMMON", szBuf, 256))
 	{
-		sscanf(line, " %s %s %s %s %d ", szAddr, szDB, szUser, szPassword, &iPort);
+		sscanf(szBuf, " %s %s %s %s %d ", szAddr, szDB, szUser, szPassword, &iPort);
 		sys_log(0, "connecting to MySQL server (common)");
 
 		int iRetry = 5;
@@ -332,9 +319,9 @@ int Start()
 		return false;
 	}
 
-	if (CConfig::instance().GetValue("SQL_HOTBACKUP", line, 256))
+	if (CConfig::instance().GetValue("SQL_HOTBACKUP", szBuf, 256))
 	{
-		sscanf(line, " %s %s %s %s %d ", szAddr, szDB, szUser, szPassword, &iPort);
+		sscanf(szBuf, " %s %s %s %s %d ", szAddr, szDB, szUser, szPassword, &iPort);
 		sys_log(0, "connecting to MySQL server (hotbackup)");
 
 		int iRetry = 5;
