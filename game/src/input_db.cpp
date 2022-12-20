@@ -51,7 +51,6 @@ extern BYTE		g_bAuthServer;
 extern void gm_insert(const char * name, BYTE level);
 extern BYTE	gm_get_level(const char * name, const char * host, const char* account );
 extern void gm_host_insert(const char * host);
-extern int openid_server;
 
 #define MAPNAME_DEFAULT	"none"
 
@@ -1748,42 +1747,6 @@ void CInputDB::AuthLogin(LPDESC d, const char * c_pData)
 	d->Packet(&ptoc, sizeof(TPacketGCAuthSuccess));
 	sys_log(0, "AuthLogin result %u key %u", bResult, d->GetLoginKey());
 }
-void CInputDB::AuthLoginOpenID(LPDESC d, const char * c_pData)
-{
-	if (!d)
-		return;
-
-	BYTE bResult = *(BYTE *) c_pData;
-
-	TPacketGCAuthSuccessOpenID ptoc;
-
-	ptoc.bHeader = HEADER_GC_AUTH_SUCCESS_OPENID;
-
-	if (bResult)
-	{
-		// Panama ��ȣȭ �ѿ� �ʿ��� Ű ������
-		SendPanamaList(d);
-		ptoc.dwLoginKey = d->GetLoginKey();
-
-		//NOTE: AuthSucess���� ���� �������� �ȱ׷��� PHASE Close�� �Ǽ� �������� �ʴ´�.-_-
-		//Send Client Package CryptKey
-		{
-			DESC_MANAGER::instance().SendClientPackageCryptKey(d);
-			DESC_MANAGER::instance().SendClientPackageSDBToLoadMap(d, MAPNAME_DEFAULT);
-		}
-	}
-	else
-	{
-		ptoc.dwLoginKey = 0;
-	}
-
-	strcpy(ptoc.login, d->GetLogin().c_str());
-
-	ptoc.bResult = bResult;
-
-	d->Packet(&ptoc, sizeof(TPacketGCAuthSuccessOpenID));
-	sys_log(0, "AuthLogin result %u key %u", bResult, d->GetLoginKey());
-}
 
 void CInputDB::ChangeEmpirePriv(const char* c_pData)
 {
@@ -2322,9 +2285,6 @@ int CInputDB::Analyze(LPDESC d, BYTE bHeader, const char * c_pData)
 		break;
 
 	case HEADER_DG_AUTH_LOGIN:
-		if (openid_server)
-			AuthLoginOpenID(DESC_MANAGER::instance().FindByHandle(m_dwHandle), c_pData);
-		else
 			AuthLogin(DESC_MANAGER::instance().FindByHandle(m_dwHandle), c_pData);
 		break;
 
