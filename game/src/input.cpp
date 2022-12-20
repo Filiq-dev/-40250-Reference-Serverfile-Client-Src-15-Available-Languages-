@@ -17,7 +17,6 @@
 #include "priv_manager.h"
 #include "castle.h"
 #include "dev_log.h"
-// #include "HackShield_Impl.h"
 
 #ifndef __WIN32__
 	#include "limit_time.h"

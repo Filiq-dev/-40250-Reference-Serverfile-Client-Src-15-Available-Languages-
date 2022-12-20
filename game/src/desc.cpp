@@ -16,7 +16,6 @@
 #include "guild_manager.h"
 #include "TrafficProfiler.h"
 #include "locale_service.h"
-// #include "HackShield.h"
 #include "log.h"
 
 extern int max_bytes_written;
@@ -236,7 +235,7 @@ bool DESC::Setup(LPFDWATCH _fdw, socket_t _fd, const struct sockaddr_in & c_rSoc
 	//if (LC_IsEurope() == true || LC_IsNewCIBN())
 	//	m_lpOutputBuffer = buffer_new(DEFAULT_PACKET_BUFFER_SIZE * 2);
 	//else
-	//NOTE: ÀÌ°É ³ª¶óº°·Î ´Ù¸£°Ô Àâ¾Æ¾ßÇÒ ÀÌÀ¯°¡ ÀÖ³ª?
+	//NOTE: ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½óº°·ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö³ï¿½?
 	m_lpOutputBuffer = buffer_new(DEFAULT_PACKET_BUFFER_SIZE * 2);
 
 	m_iMinInputBufferLen = MAX_INPUT_LEN >> 1;
@@ -309,7 +308,7 @@ int DESC::ProcessInput()
 
 		int iBytesProceed = 0;
 
-		// false°¡ ¸®ÅÏ µÇ¸é ´Ù¸¥ phase·Î ¹Ù²ï °ÍÀÌ¹Ç·Î ´Ù½Ã ÇÁ·Î¼¼½º·Î µ¹ÀÔÇÑ´Ù!
+		// falseï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½Ù¸ï¿½ phaseï¿½ï¿½ ï¿½Ù²ï¿½ ï¿½ï¿½ï¿½Ì¹Ç·ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½!
 		while (!m_pInputProcessor->Process(this, buffer_read_peek(m_lpInputBuffer), buffer_size(m_lpInputBuffer), iBytesProceed))
 		{
 			buffer_read_proceed(m_lpInputBuffer, iBytesProceed);
@@ -323,7 +322,7 @@ int DESC::ProcessInput()
 	{
 		int iBytesProceed = 0;
 
-		// false°¡ ¸®ÅÏ µÇ¸é ´Ù¸¥ phase·Î ¹Ù²ï °ÍÀÌ¹Ç·Î ´Ù½Ã ÇÁ·Î¼¼½º·Î µ¹ÀÔÇÑ´Ù!
+		// falseï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½Ù¸ï¿½ phaseï¿½ï¿½ ï¿½Ù²ï¿½ ï¿½ï¿½ï¿½Ì¹Ç·ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½!
 		while (!m_pInputProcessor->Process(this, buffer_read_peek(m_lpInputBuffer), buffer_size(m_lpInputBuffer), iBytesProceed))
 		{
 			buffer_read_proceed(m_lpInputBuffer, iBytesProceed);
@@ -336,9 +335,9 @@ int DESC::ProcessInput()
 	{
 		int iSizeBuffer = buffer_size(m_lpInputBuffer);
 
-		// 8¹ÙÀÌÆ® ´ÜÀ§·Î¸¸ Ã³¸®ÇÑ´Ù. 8¹ÙÀÌÆ® ´ÜÀ§¿¡ ºÎÁ·ÇÏ¸é Àß¸øµÈ ¾ÏÈ£È­ ¹öÆÛ¸¦ º¹È£È­
-		// ÇÒ °¡´É¼ºÀÌ ÀÖÀ¸¹Ç·Î Â©¶ó¼­ Ã³¸®ÇÏ±â·Î ÇÑ´Ù.
-		if (iSizeBuffer & 7) // & 7Àº % 8°ú °°´Ù. 2ÀÇ ½Â¼ö¿¡¼­¸¸ °¡´É
+		// 8ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ Ã³ï¿½ï¿½ï¿½Ñ´ï¿½. 8ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½È£È­ ï¿½ï¿½ï¿½Û¸ï¿½ ï¿½ï¿½È£È­
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½É¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ Â©ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ ï¿½Ñ´ï¿½.
+		if (iSizeBuffer & 7) // & 7ï¿½ï¿½ % 8ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. 2ï¿½ï¿½ ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			iSizeBuffer -= iSizeBuffer & 7;
 
 		if (iSizeBuffer > 0)
@@ -356,7 +355,7 @@ int DESC::ProcessInput()
 
 			int iBytesProceed = 0;
 
-			// false°¡ ¸®ÅÏ µÇ¸é ´Ù¸¥ phase·Î ¹Ù²ï °ÍÀÌ¹Ç·Î ´Ù½Ã ÇÁ·Î¼¼½º·Î µ¹ÀÔÇÑ´Ù!
+			// falseï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½Ù¸ï¿½ phaseï¿½ï¿½ ï¿½Ù²ï¿½ ï¿½ï¿½ï¿½Ì¹Ç·ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½!
 			while (!m_pInputProcessor->Process(this, buffer_read_peek(lpBufferDecrypt), buffer_size(lpBufferDecrypt), iBytesProceed))
 			{
 				if (iBytesProceed > iSizeBuffer)
@@ -432,12 +431,12 @@ void DESC::Packet(const void * c_pvData, int iSize)
 {
 	assert(iSize > 0);
 
-	if (m_iPhase == PHASE_CLOSE) // ²÷´Â »óÅÂ¸é º¸³»Áö ¾Ê´Â´Ù.
+	if (m_iPhase == PHASE_CLOSE) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.
 		return;
 
 	if (m_stRelayName.length() != 0)
 	{
-		// Relay ÆÐÅ¶Àº ¾ÏÈ£È­ÇÏÁö ¾Ê´Â´Ù.
+		// Relay ï¿½ï¿½Å¶ï¿½ï¿½ ï¿½ï¿½È£È­ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.
 		TPacketGGRelay p;
 
 		p.bHeader = HEADER_GG_RELAY;
@@ -506,7 +505,7 @@ void DESC::Packet(const void * c_pvData, int iSize)
 			}
 			else
 			{
-				// ¾ÏÈ£È­¿¡ ÇÊ¿äÇÑ ÃæºÐÇÑ ¹öÆÛ Å©±â¸¦ È®º¸ÇÑ´Ù.
+				// ï¿½ï¿½È£È­ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ È®ï¿½ï¿½ï¿½Ñ´ï¿½.
 				/* buffer_adjust_size(m_lpOutputBuffer, iSize + 8); */
 				DWORD * pdwWritePoint = (DWORD *) buffer_write_peek(m_lpOutputBuffer);
 
@@ -549,7 +548,7 @@ void DESC::SetPhase(int _phase)
 	switch (m_iPhase)
 	{
 		case PHASE_CLOSE:
-			// ¸Þ½ÅÀú°¡ Ä³¸¯ÅÍ´ÜÀ§°¡ µÇ¸é¼­ »èÁ¦
+			// ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸é¼­ ï¿½ï¿½ï¿½ï¿½
 			//MessengerManager::instance().Logout(GetAccountTable().login);
 			m_pInputProcessor = &m_inputClose;
 			break;
@@ -559,8 +558,8 @@ void DESC::SetPhase(int _phase)
 			break;
 
 		case PHASE_SELECT:
-			// ¸Þ½ÅÀú°¡ Ä³¸¯ÅÍ´ÜÀ§°¡ µÇ¸é¼­ »èÁ¦
-			//MessengerManager::instance().Logout(GetAccountTable().login); // ÀÇµµÀûÀ¸·Î break ¾È°Ë
+			// ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸é¼­ ï¿½ï¿½ï¿½ï¿½
+			//MessengerManager::instance().Logout(GetAccountTable().login); // ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ break ï¿½È°ï¿½
 		case PHASE_LOGIN:
 		case PHASE_LOADING:
 #ifndef _IMPROVED_PACKET_ENCRYPTION_
@@ -892,7 +891,7 @@ void DESC::DisconnectOfSameLogin()
 		if (m_pkDisconnectEvent)
 			return;
 
-		GetCharacter()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("´Ù¸¥ ÄÄÇ»ÅÍ¿¡¼­ ·Î±×ÀÎ ÇÏ¿© Á¢¼ÓÀ» Á¾·á ÇÕ´Ï´Ù."));
+		GetCharacter()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ï¿½Ù¸ï¿½ ï¿½ï¿½Ç»ï¿½Í¿ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Õ´Ï´ï¿½."));
 		DelayedDisconnect(5);
 	}
 	else
