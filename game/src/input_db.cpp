@@ -112,22 +112,11 @@ bool GetServerLocation(TAccountTable & rTab, BYTE bEmpire)
 	return bFound;
 }
 
-extern std::map<DWORD, CLoginSim *> g_sim;
-extern std::map<DWORD, CLoginSim *> g_simByPID;
-
 void CInputDB::LoginSuccess(DWORD dwHandle, const char *data)
 {
 	sys_log(0, "LoginSuccess");
 
 	TAccountTable * pTab = (TAccountTable *) data;
-
-	itertype(g_sim) it = g_sim.find(pTab->id);
-	if (g_sim.end() != it)
-	{
-		sys_log(0, "CInputDB::LoginSuccess - already exist sim [%s]", pTab->login);
-		it->second->SendLoad();
-		return;
-	}
 
 	LPDESC d = DESC_MANAGER::instance().FindByHandle(dwHandle);
 

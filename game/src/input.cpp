@@ -253,8 +253,6 @@ CInputHandshake::~CInputHandshake()
 }
 
 
-std::map<DWORD, CLoginSim *> g_sim;
-std::map<DWORD, CLoginSim *> g_simByPID;
 std::vector<TPlayerTable> g_vec_save;
 
 // BLOCK_CHAT

@@ -15,7 +15,6 @@
 #include "questmanager.h"
 #include "questlua.h"
 #include "locale_service.h"
-// #include "XTrapManager.h"
 
 #include <boost/bind.hpp>
 
