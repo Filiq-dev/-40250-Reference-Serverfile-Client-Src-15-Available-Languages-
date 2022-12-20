@@ -803,7 +803,6 @@ void CInputDB::Boot(const char* data)
 		for (WORD i = 0; i < size; ++i, ++kObj)
 			CManager::instance().LoadObject(kObj, true);
 	}
-	
 	set_global_time(*(time_t *) data);
 	data += sizeof(time_t);
 

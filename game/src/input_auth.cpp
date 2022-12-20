@@ -8,7 +8,6 @@
 #include "matrix_card.h"
 #include "passpod.h"
 #include "locale_service.h"
-#include "auth_brazil.h"
 #include "db.h"
 
 #ifndef __WIN32__
@@ -30,11 +29,11 @@ bool FN_IS_VALID_LOGIN_STRING(const char *str)
 
 	for (tmp = str; *tmp; ++tmp)
 	{
-		// ¾ËÆÄºª°ú ¼öÀÚ¸¸ Çã¿ë
+		// ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½
 		if (isdigit(*tmp) || isalpha(*tmp))
 			continue;
 
-		// Ä³³ª´Ù´Â ¸î¸î Æ¯¼ö¹®ÀÚ Çã¿ë
+		// Ä³ï¿½ï¿½ï¿½Ù´ï¿½ ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		if (LC_IsCanada())
 		{
 			switch (*tmp)
@@ -63,17 +62,6 @@ bool FN_IS_VALID_LOGIN_STRING(const char *str)
 			{
 				case '-' :
 				case '_' :
-					continue;
-			}
-		}
-
-		if (LC_IsBrazil() == true)
-		{
-			switch (*tmp)
-			{
-				case '_' :
-				case '-' :
-				case '=' :
 					continue;
 			}
 		}
@@ -130,7 +118,7 @@ void CInputAuth::Login(LPDESC d, const char * c_pData)
 		return;
 	}
 
-	// string ¹«°á¼ºÀ» À§ÇØ º¹»ç
+	// string ï¿½ï¿½ï¿½á¼ºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	char login[LOGIN_MAX_LEN + 1];
 	trim_and_lower(pinfo->login, login, sizeof(login));
 
@@ -171,26 +159,6 @@ void CInputAuth::Login(LPDESC d, const char * c_pData)
 	d->SetPanamaKey(dwPanamaKey);
 
 	sys_log(0, "InputAuth::Login : key %u:0x%x login %s", dwKey, dwPanamaKey, login);
-
-	// BRAZIL_AUTH
-	if (LC_IsBrazil() && !test_server)
-	{
-		int result = auth_brazil(login, passwd);
-
-		switch (result)
-		{
-			case AUTH_BRAZIL_SERVER_ERR:
-			case AUTH_BRAZIL_NOID:
-				LoginFailure(d, "NOID");
-				return;
-			case AUTH_BRAZIL_WRONGPWD:
-				LoginFailure(d, "WRONGPWD");
-				return;
-			case AUTH_BRAZIL_FLASHUSER:
-				LoginFailure(d, "FLASH");
-				return;
-		}
-	}
 
 	TPacketCGLogin3 * p = M2_NEW TPacketCGLogin3;
 	thecore_memcpy(p, pinfo, sizeof(TPacketCGLogin3));
@@ -254,13 +222,13 @@ void CInputAuth::LoginOpenID(LPDESC d, const char * c_pData)
 	//OpenID test code.
 	TPacketCGLogin5 *tempInfo1 = (TPacketCGLogin5 *)c_pData;
 
-	//ÀÏº» À¥ ¼­¹ö¿¡ ÀÎÁõÅ° È®ÀÎ ¿äÃ»À» º¸³½´Ù.
+	//ï¿½Ïºï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å° È®ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 	char* authKey = tempInfo1->authKey;
 	char returnID[LOGIN_MAX_LEN + 1] = {0};
 
 	int test_url_get_protocol = auth_OpenID(authKey, inet_ntoa(d->GetAddr().sin_addr), returnID);
 
-	//ÀÎÁõ ½ÇÆÐ. ¿¡·¯ Ã³¸®
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 	if (0!=test_url_get_protocol)
 	{
 		LoginFailure(d, "OpenID Fail");
@@ -282,7 +250,7 @@ void CInputAuth::LoginOpenID(LPDESC d, const char * c_pData)
 		return;
 	}
 
-	// string ¹«°á¼ºÀ» À§ÇØ º¹»ç
+	// string ï¿½ï¿½ï¿½á¼ºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	char login[LOGIN_MAX_LEN + 1];
 	trim_and_lower(pinfo->login, login, sizeof(login));
 
@@ -323,26 +291,6 @@ void CInputAuth::LoginOpenID(LPDESC d, const char * c_pData)
 	d->SetPanamaKey(dwPanamaKey);
 
 	sys_log(0, "InputAuth::Login : key %u:0x%x login %s", dwKey, dwPanamaKey, login);
-
-	// BRAZIL_AUTH
-	if (LC_IsBrazil() && !test_server)
-	{
-		int result = auth_brazil(login, passwd);
-
-		switch (result)
-		{
-			case AUTH_BRAZIL_SERVER_ERR:
-			case AUTH_BRAZIL_NOID:
-				LoginFailure(d, "NOID");
-				return;
-			case AUTH_BRAZIL_WRONGPWD:
-				LoginFailure(d, "WRONGPWD");
-				return;
-			case AUTH_BRAZIL_FLASHUSER:
-				LoginFailure(d, "FLASH");
-				return;
-		}
-	}
 
 	TPacketCGLogin3 * p = M2_NEW TPacketCGLogin3;
 	thecore_memcpy(p, pinfo, sizeof(TPacketCGLogin3));
@@ -459,7 +407,7 @@ int CInputAuth::auth_OpenID(const char *authKey, const char *ipAddr, char *rID)
 	    return 3;
 	}
 
-	//°á°ú°ª ÆÄ½Ì
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½
 	char buffer[1024];
 	strcpy(buffer, reply);
 
@@ -484,7 +432,7 @@ int CInputAuth::auth_OpenID(const char *authKey, const char *ipAddr, char *rID)
 		return 4;
 	}
 
-	if (0 != strcmp("OK", success))		//¿¡·¯ Ã³¸®
+	if (0 != strcmp("OK", success))		//ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 	{
 		int returnNumber = 0;
 		str_to_number(returnNumber, id);
@@ -547,7 +495,7 @@ int CInputAuth::Analyze(LPDESC d, BYTE bHeader, const char * c_pData)
 			Login(d, c_pData);
 			break;
 
-		//2012.07.19 OpenID : ±è¿ë¿í
+		//2012.07.19 OpenID : ï¿½ï¿½ï¿½ï¿½
 		case HEADER_CG_LOGIN5_OPENID:
 			if (openid_server)
 				LoginOpenID(d, c_pData);

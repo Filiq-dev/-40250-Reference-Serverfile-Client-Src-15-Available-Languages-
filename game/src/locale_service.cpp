@@ -87,7 +87,7 @@ int check_name_independent(const char * str)
 	if (CBanwordManager::instance().CheckString(str, strlen(str)))
 		return 0;
 
-	// ¸ó½ºÅÍ ÀÌ¸§À¸·Î´Â ¸¸µé ¼ö ¾ø´Ù.
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	char szTmp[256];
 	str_lower(str, szTmp, sizeof(szTmp));
 
@@ -128,12 +128,12 @@ int check_name_gb2312(const char * str)
 			b1 = str[i++];
 			b2 = str[i++];
 
-			// Áß±¹ °£Ã¼´Â Ã¹¹øÂ° ¹ÙÀÌÆ® ¹üÀ§°¡ b0 -> f7 ±îÁö°í
-			// µÎ¹øÂ° ¹ÙÀÌÆ® ¹üÀ§°¡ a1 -> fe ´Ù.
+			// ï¿½ß±ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ Ã¹ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ b0 -> f7 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ï¿½Î¹ï¿½Â° ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ a1 -> fe ï¿½ï¿½.
 			if (b1 < 0xb0 || b1 > 0xf7 || b2 < 0xa1 || b2 > 0xfe)
 				return 0;
 
-			// ¿¹¿Ü°¡ ÀÖ´Ù.
+			// ï¿½ï¿½ï¿½Ü°ï¿½ ï¿½Ö´ï¿½.
 			for (j = 0; j < 5; j++)
 				if (b1 == exceptions[j][0] && b2 == exceptions[j][1])
 					return 0;
@@ -180,8 +180,8 @@ int check_name_big5(const char * str )
 			b[0] = b2;
 			b[1] = b1;
 
-			// Áß±¹ ¹øÃ¼ ( big5 : È«Äá )
-			// ¹üÀ§´Â ´ÙÀ½°ú °°´Ù.
+			// ï¿½ß±ï¿½ ï¿½ï¿½Ã¼ ( big5 : È«ï¿½ï¿½ )
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 			//  big5: 0xA140--0xF9D5
 			//  extended big5: 0x40--0x7E and 0xA1--0xFE
 
@@ -240,15 +240,15 @@ int check_name_euckr(const char * str)
 
 	for (tmp = str; *tmp; ++tmp)
 	{
-		// ÇÑ±ÛÀÌ ¾Æ´Ï°í ºóÄ­ÀÌ¸é Àß¸øµÈ °Í
+		// ï¿½Ñ±ï¿½ï¿½ï¿½ ï¿½Æ´Ï°ï¿½ ï¿½ï¿½Ä­ï¿½Ì¸ï¿½ ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½
 		if (isnhspace(*tmp))
 			return 0;
 
-		// ÇÑ±ÛÀÌ ¾Æ´Ï°í ¼ýÀÚ¶ó¸é ÀûÇÕÇÏ´Ù.
+		// ï¿½Ñ±ï¿½ï¿½ï¿½ ï¿½Æ´Ï°ï¿½ ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 		if (isnhdigit(*tmp))
 			continue;
 
-		// ÇÑ±ÛÀÌ ¾Æ´Ï°í ¿µ¹®ÀÌ¶ó¸é ÀûÇÕÇÏ´Ù.   
+		// ï¿½Ñ±ï¿½ï¿½ï¿½ ï¿½Æ´Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.   
 		if (!ishan(*tmp) && isalpha(*tmp))
 			continue;
 
@@ -280,15 +280,15 @@ int check_name_latin1(const char * str)
 
 	for (tmp = str; *tmp; ++tmp)
 	{
-		// ÇÑ±ÛÀÌ ¾Æ´Ï°í ºóÄ­ÀÌ¸é Àß¸øµÈ °Í
+		// ï¿½Ñ±ï¿½ï¿½ï¿½ ï¿½Æ´Ï°ï¿½ ï¿½ï¿½Ä­ï¿½Ì¸ï¿½ ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½
 		if (isnhspace(*tmp))
 			return 0;
 
-		// ÇÑ±ÛÀÌ ¾Æ´Ï°í ¼ýÀÚ¶ó¸é ÀûÇÕÇÏ´Ù.
+		// ï¿½Ñ±ï¿½ï¿½ï¿½ ï¿½Æ´Ï°ï¿½ ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 		if (isnhdigit(*tmp))
 			continue;
 
-		// ÇÑ±ÛÀÌ ¾Æ´Ï°í ¿µ¹®ÀÌ¶ó¸é ÀûÇÕÇÏ´Ù.   
+		// ï¿½Ñ±ï¿½ï¿½ï¿½ ï¿½Æ´Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.   
 		if (!ishan(*tmp) && isalpha(*tmp))
 			continue;
 
@@ -325,7 +325,7 @@ int check_name_alphabet(const char * str)
 
 	for (tmp = str; *tmp; ++tmp)
 	{
-		// ¾ËÆÄºª°ú ¼öÀÚ¸¸ Çã¿ë
+		// ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½
 		if (isdigit(*tmp) || isalpha(*tmp))
 			continue;
 		else
@@ -374,7 +374,7 @@ int check_name_sjis(const char *str)
 	const char	*p = str;
 	const char	*e = str + strlen(str);	// NULL position
 
-	// ÀÏº»Àº Ä³¸¯ÅÍ ÀÌ¸§±æÀÌ 16byte ±îÁö
+	// ï¿½Ïºï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ 16byte ï¿½ï¿½ï¿½ï¿½
 	if ( strlen(str) < 2 || strlen(str) > 16 )
 		return 0;
 
@@ -387,7 +387,7 @@ int check_name_sjis(const char *str)
 				return false;
 
 			// END_OF_DISABLE_SPECIAL_CHAR_NAMING
-			// ÀÌ¹®ÀÚ´Â Çã¿ëµÇÁö ¾Ê´Â´Ù.
+			// ï¿½Ì¹ï¿½ï¿½Ú´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.
 			if ((BYTE)p[0]==0x81 && (BYTE)p[1]==0x40) return false;
 
 			p += 2;
@@ -395,7 +395,7 @@ int check_name_sjis(const char *str)
 		}
 		else
 		{
-			// ¿µ¹®ÀÌ³ª ¼öÀÚ´Â Çã¿ëÇÑ´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½Ú´ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			if (isalpha(*p) || isdigit(*p))
 			{
 				p += 1;
@@ -942,7 +942,7 @@ static void __LocaleService_Init_Singapore()
 	check_name	= check_name_alphabet;
 
 	g_iUseLocale = TRUE;
-	//exp_table = exp_table_newcibn; 2013 09 11 CYH europe °ú µ¿ÀÏÇÏ°Ô °£´Ù.
+	//exp_table = exp_table_newcibn; 2013 09 11 CYH europe ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½.
 }
 
 static void __LocaleService_Init_Vietnam()
@@ -1362,18 +1362,18 @@ bool LC_IsEurope()
 		case LC_DENMARK:
 		case LC_BULGARIA:
 		case LC_CROATIA:
-		case LC_MEXICO: // ³²¹ÌÁö¸¸ GF¿¡¼­ ¼­ºñ½º ÇÏ¹Ç·Î ¿©±â ³ÖÀ½
-		case LC_ARABIA: // Áßµ¿ÀÌÁö¸¸ GF¿¡¼­ ¼­ºñ½º ÇÏ¹Ç·Î ¿©±â ³ÖÀ½
+		case LC_MEXICO: // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ GFï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¹Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		case LC_ARABIA: // ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ GFï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¹Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		case LC_CZECH:
 		case LC_ROMANIA:
 		case LC_HUNGARY:
 		case LC_NETHERLANDS:
 		case LC_USA:
-		case LC_WE_KOREA:	// ÇÑ±¹ÀÌÁö¸¸ UK ¹öÀü ±â¹ÝÀÌ¹Ç·Î ¿©±â ³ÖÀ½
-		case LC_TAIWAN:		// ´ë¸¸ÀÌÁö¸¸ WE_KOREA ¹öÀü ±â¹ÝÀÌ¹Ç·Î ¿©±â ³ÖÀ½
-		case LC_JAPAN:		// ÀÏº»ÀÌÁö¸¸ WE(World Edition -_-) ¹öÀüÀÌ¹Ç·Î ¿©±â ³ÖÀ½
+		case LC_WE_KOREA:	// ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ UK ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¹Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		case LC_TAIWAN:		// ï¿½ë¸¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ WE_KOREA ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¹Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		case LC_JAPAN:		// ï¿½Ïºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ WE(World Edition -_-) ï¿½ï¿½ï¿½ï¿½ï¿½Ì¹Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		case LC_NEWCIBN:
-		case LC_CANADA:	// Ä³³ª´Ù GF¿¡¼­ ¼­ºñ½º ½ÃÀÛ
+		case LC_CANADA:	// Ä³ï¿½ï¿½ï¿½ï¿½ GFï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		case LC_ENGLISH: //Fix (Kinda)
 			return true;
 	}

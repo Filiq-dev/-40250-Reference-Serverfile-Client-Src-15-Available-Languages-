@@ -36,7 +36,6 @@ enum
 	QID_PROTECT_CHILD,
 	// END_PROTECT_CHILD_FOR_NEWCIBN
 
-	QID_BRAZIL_CREATE_ID,
 	QID_JAPAN_CREATE_ID,
 };
 
@@ -109,7 +108,7 @@ class DBManager : public singleton<DBManager>
 		void			FlushBilling(bool bForce=false);
 		void			CheckBilling();
 
-		void			StopAllBilling(); // 20050503.ipkn.DB-AUTH Á¢¼Ó Á¾·á½Ã ºô¸µ Å×ÀÌºí ¸ðµÎ Áö¿ì±â (Àç¿¬°á½Ã º¹±¸ÇÔ)
+		void			StopAllBilling(); // 20050503.ipkn.DB-AUTH ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ç¿¬ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 
 		DWORD			CountQuery()		{ return m_sql.CountQuery(); }
 		DWORD			CountQueryResult()	{ return m_sql.CountResult(); }
@@ -123,8 +122,8 @@ class DBManager : public singleton<DBManager>
 		const std::string &	GetDBString(const std::string& key);
 		const std::vector<std::string> & GetGreetMessage();
 
-		template<class Functor> void FuncQuery(Functor f, const char * c_pszFormat, ...); // °á°ú¸¦ fÀÎÀÚ·Î È£ÃâÇÔ (SQLMsg *) ¾Ë¾Æ¼­ ÇØÁ¦µÊ
-		template<class Functor> void FuncAfterQuery(Functor f, const char * c_pszFormat, ...); // ³¡³ª°í ³ª¸é f°¡ È£ÃâµÊ void			f(void) ÇüÅÂ
+		template<class Functor> void FuncQuery(Functor f, const char * c_pszFormat, ...); // ï¿½ï¿½ï¿½ï¿½ï¿½ fï¿½ï¿½ï¿½Ú·ï¿½ È£ï¿½ï¿½ï¿½ï¿½ (SQLMsg *) ï¿½Ë¾Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		template<class Functor> void FuncAfterQuery(Functor f, const char * c_pszFormat, ...); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ fï¿½ï¿½ È£ï¿½ï¿½ï¿½ void			f(void) ï¿½ï¿½ï¿½ï¿½
 
 		size_t EscapeString(char* dst, size_t dstSize, const char *src, size_t srcSize);
 

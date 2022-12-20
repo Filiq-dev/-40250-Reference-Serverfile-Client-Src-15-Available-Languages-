@@ -19,13 +19,12 @@
 #include "locale_service.h"
 #include "pcbang.h"
 #include "spam.h"
-#include "auth_brazil.h"
 
 extern bool g_bNoPasspod;
 extern std::string g_stBlockDate;
 extern int openid_server;
 
-//Áß±¹ passpod Àü¿ë ÇÔ¼ö 
+//ï¿½ß±ï¿½ passpod ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ 
 bool CheckPasspod(const char * account)
 {
 	char szQuery[1024];
@@ -434,7 +433,7 @@ void DBManager::FlushBilling(bool bForce)
 void DBManager::CheckBilling()
 {
 	std::vector<DWORD> vec;
-	vec.push_back(0); // Ä«¿îÆ®¸¦ À§ÇØ ¹Ì¸® ºñ¿öµÐ´Ù.
+	vec.push_back(0); // Ä«ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ð´ï¿½.
 
 	//sys_log(0, "CheckBilling: map size %d", m_map_pkLoginData.size());
 
@@ -451,7 +450,7 @@ void DBManager::CheckBilling()
 		}
 	}
 
-	vec[0] = vec.size() - 1; // ºñ¿öµÐ °÷¿¡ »çÀÌÁî¸¦ ³Ö´Â´Ù, »çÀÌÁî ÀÚ½ÅÀº Á¦¿ÜÇØ¾ß ÇÏ¹Ç·Î -1
+	vec[0] = vec.size() - 1; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½î¸¦ ï¿½Ö´Â´ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ï¹Ç·ï¿½ -1
 	db_clientdesc->DBPacket(HEADER_GD_BILLING_CHECK, 0, &vec[0], sizeof(DWORD) * vec.size());
 }
 
@@ -691,29 +690,16 @@ void DBManager::AnalyzeReturnQuery(SQLMsg * pMsg)
 					M2_DELETE(pinfo);
 					break;
 				}
-				//À§Ä¡ º¯°æ - By SeMinZ
+				//ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ - By SeMinZ
 				d->SetLogin(pinfo->login);
 
 				sys_log(0, "QID_AUTH_LOGIN: START %u %p", qi->dwIdent, get_pointer(d));
 
 				if (pMsg->Get()->uiNumRows == 0)
 				{
-					if (true == LC_IsBrazil())
-					{
-						// °èÁ¤ÀÌ ¾øÀ¸¸é »õ·Î ¸¸µé¾î¾ß ÇÑ´Ù
-						ReturnQuery(QID_BRAZIL_CREATE_ID, qi->dwIdent, pinfo,
-								"INSERT INTO account(login, password, social_id, create_time) "
-								"VALUES('%s', password('%s'), '0000000', NOW()) ;",
-								pinfo->login, pinfo->passwd);
-
-						sys_log(0, "[AUTH_BRAZIL] : Create A new AccountID From OnGame");
-					}
-					else
-					{
-						sys_log(0, "   NOID");
-						LoginFailure(d, "NOID");
-						M2_DELETE(pinfo);
-					}
+					sys_log(0, "   NOID");
+					LoginFailure(d, "NOID");
+					M2_DELETE(pinfo);
 				}
 				else
 				{
@@ -828,11 +814,6 @@ void DBManager::AnalyzeReturnQuery(SQLMsg * pMsg)
 
 					int nPasswordDiff = strcmp(szEncrytPassword, szPassword);
 
-					if (true == LC_IsBrazil())
-					{
-						nPasswordDiff = 0; // ºê¶óÁú ¹öÀü¿¡¼­´Â ºñ¹Ð¹øÈ£ Ã¼Å©¸¦ ÇÏÁö ¾Ê´Â´Ù.
-					}
-
 					if (nPasswordDiff)
 					{
 						LoginFailure(d, "WRONGPWD");
@@ -861,7 +842,7 @@ void DBManager::AnalyzeReturnQuery(SQLMsg * pMsg)
 					{
 						if (LC_IsEurope())
 						{
-							//stBlockData >= 0 == ³¯Â¥°¡ BlockDate º¸´Ù ¹Ì·¡ 
+							//stBlockData >= 0 == ï¿½ï¿½Â¥ï¿½ï¿½ BlockDate ï¿½ï¿½ï¿½ï¿½ ï¿½Ì·ï¿½ 
 							if (strncmp(szCreateDate, g_stBlockDate.c_str(), 8) >= 0)
 							{
 								LoginFailure(d, "BLKLOGIN");
@@ -908,25 +889,16 @@ void DBManager::AnalyzeReturnQuery(SQLMsg * pMsg)
 					M2_DELETE(pinfo);
 					break;
 				}
-				//À§Ä¡ º¯°æ - By SeMinZ
+				//ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ - By SeMinZ
 				d->SetLogin(pinfo->login);
 
 				sys_log(0, "QID_AUTH_LOGIN_OPENID: START %u %p", qi->dwIdent, get_pointer(d));
 
 				if (pMsg->Get()->uiNumRows == 0)
-				{
-					if (true == LC_IsBrazil())
+				{	
+					if (true == LC_IsJapan())
 					{
-						// °èÁ¤ÀÌ ¾øÀ¸¸é »õ·Î ¸¸µé¾î¾ß ÇÑ´Ù
-						ReturnQuery(QID_BRAZIL_CREATE_ID, qi->dwIdent, pinfo,
-								"INSERT INTO account(login, password, social_id, create_time) "
-								"VALUES('%s', password('%s'), '0000000', NOW()) ;",
-								pinfo->login, pinfo->passwd);
-
-						sys_log(0, "[AUTH_BRAZIL] : Create A new AccountID From OnGame");
-					} else if (true == LC_IsJapan())
-					{
-						// °èÁ¤ÀÌ ¾øÀ¸¸é »õ·Î ¸¸µé¾î¾ß ÇÑ´Ù
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½
 						ReturnQuery(QID_JAPAN_CREATE_ID, qi->dwIdent, pinfo,
 								"INSERT INTO account(login, password, social_id, create_time) "
 								"VALUES('%s', password('%s'), '0000000', NOW()) ;",
@@ -1054,12 +1026,7 @@ void DBManager::AnalyzeReturnQuery(SQLMsg * pMsg)
 
 					int nPasswordDiff = strcmp(szEncrytPassword, szPassword);
 
-					if (true == LC_IsBrazil())
-					{
-						nPasswordDiff = 0; // ºê¶óÁú ¹öÀü¿¡¼­´Â ºñ¹Ð¹øÈ£ Ã¼Å©¸¦ ÇÏÁö ¾Ê´Â´Ù.
-					}
-
-					//OpenID : OpenID ÀÇ °æ¿ì, ºñ¹Ð¹øÈ£ Ã¼Å©¸¦ ÇÏÁö ¾Ê´Â´Ù.
+					//OpenID : OpenID ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½Ð¹ï¿½È£ Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.
 					if (openid_server)
 					{
 						nPasswordDiff = 0;
@@ -1093,7 +1060,7 @@ void DBManager::AnalyzeReturnQuery(SQLMsg * pMsg)
 					{
 						if (LC_IsEurope())
 						{
-							//stBlockData >= 0 == ³¯Â¥°¡ BlockDate º¸´Ù ¹Ì·¡ 
+							//stBlockData >= 0 == ï¿½ï¿½Â¥ï¿½ï¿½ BlockDate ï¿½ï¿½ï¿½ï¿½ ï¿½Ì·ï¿½ 
 							if (strncmp(szCreateDate, g_stBlockDate.c_str(), 8) >= 0)
 							{
 								LoginFailure(d, "BLKLOGIN");
@@ -1296,7 +1263,7 @@ void DBManager::AnalyzeReturnQuery(SQLMsg * pMsg)
 						if (pkItem)
 						{
 							sys_log(0, "GIVE LOTTO SUCCESS TO %s (pid %u)", ch->GetName(), qi->dwIdent);
-							//ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("¾ÆÀÌÅÛ È¹µæ: %s"), pkItem->GetName());
+							//ch->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¹ï¿½ï¿½: %s"), pkItem->GetName());
 
 							pkItem->SetSocket(0, pMsg->Get()->uiInsertID);
 							pkItem->SetSocket(1, pdw[2]);
@@ -1435,38 +1402,6 @@ void DBManager::AnalyzeReturnQuery(SQLMsg * pMsg)
 
 
 			// END_OF_PCBANG_IP_LIST
-
-		case QID_BRAZIL_CREATE_ID :
-			{
-				TPacketCGLogin3 * pinfo = (TPacketCGLogin3 *) qi->pvData ;
-
-				if( pMsg->Get()->uiAffectedRows == 0 || pMsg->Get()->uiAffectedRows == (uint32_t)-1 )
-				{
-					LPDESC d = DESC_MANAGER::instance().FindByLoginKey(qi->dwIdent) ;
-					sys_log(0, "[AUTH_BRAZIL]   NOID") ;
-					sys_log(0, "[AUTH_BRAZIL] : Failed to create a new account %s", pinfo->login) ;
-					LoginFailure(d, "NOID") ;
-					M2_DELETE(pinfo);
-				}
-				else
-				{
-					sys_log(0, "[AUTH_BRAZIL] : Succeed to create a new account %s", pinfo->login) ;
-
-					ReturnQuery(QID_AUTH_LOGIN, qi->dwIdent, pinfo,
-							"SELECT PASSWORD('%s'),password,securitycode,social_id,id,status,availDt - NOW() > 0,"
-							"UNIX_TIMESTAMP(silver_expire),"
-							"UNIX_TIMESTAMP(gold_expire),"
-							"UNIX_TIMESTAMP(safebox_expire),"
-							"UNIX_TIMESTAMP(autoloot_expire),"
-							"UNIX_TIMESTAMP(fish_mind_expire),"
-							"UNIX_TIMESTAMP(marriage_fast_expire),"
-							"UNIX_TIMESTAMP(money_drop_rate_expire),"
-							"UNIX_TIMESTAMP(create_time)"
-							" FROM account WHERE login='%s'",
-							pinfo->passwd, pinfo->login) ;
-				}
-			}
-			break;
 		case QID_JAPAN_CREATE_ID :
 			{
 				TPacketCGLogin3 * pinfo = (TPacketCGLogin3 *) qi->pvData ;
@@ -1549,7 +1484,7 @@ void VCardUse(LPCHARACTER CardOwner, LPCHARACTER CardTaker, LPITEM item)
 
 	db_clientdesc->DBPacket(HEADER_GD_VCARD, 0, &p, sizeof(TPacketGDVCard));
 
-	CardTaker->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("%dºÐÀÇ °áÁ¦½Ã°£ÀÌ Ãß°¡ µÇ¾ú½À´Ï´Ù. (°áÁ¦¹øÈ£ %d)"), item->GetSocket(1) / 60, item->GetSocket(0));
+	CardTaker->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("%dï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ %d)"), item->GetSocket(1) / 60, item->GetSocket(0));
 
 	LogManager::instance().VCardLog(p.dwID, CardTaker->GetX(), CardTaker->GetY(), g_stHostname.c_str(),
 			CardOwner->GetName(), CardOwner->GetDesc()->GetHostName(),
@@ -1685,7 +1620,7 @@ enum EAccountQID
 	QID_SPAM_DB,
 };
 
-// 10ºÐ¸¶´Ù ¸®·Îµå
+// 10ï¿½Ð¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
 static LPEVENT s_pkReloadSpamEvent = NULL;
 
 EVENTINFO(reload_spam_event_info)

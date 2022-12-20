@@ -56,7 +56,6 @@
 #include "spam.h"
 #include "panama.h"
 #include "threeway_war.h"
-#include "auth_brazil.h"
 #include "DragonLair.h"
 // #include "HackShield.h"
 #include "skill_power.h"
@@ -249,9 +248,6 @@ void heartbeat(LPHEART ht, int pulse)
 			g_bShutdown = true;
 		}
 #endif
-
-		if (g_bAuthServer && LC_IsBrazil() && !test_server)
-			auth_brazil_log();
 
 		if (!g_bAuthServer)
 		{
