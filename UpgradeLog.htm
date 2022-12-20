@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+ <html xmlns:msxsl="urn:schemas-microsoft-com:xslt"><head><meta content="en-us" http-equiv="Content-Language" /><meta content="text/html; charset=utf-16" http-equiv="Content-Type" /><title _locID="ConversionReport0">
+          Migration Report
+        </title><style> 
+                    /* Body style, for the entire document */
+                    body
+                    {
+                        background: #F3F3F4;
+                        color: #1E1E1F;
+                        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    /* Header1 style, used for the main title */
+                    h1
+                    {
+                        padding: 10px 0px 10px 10px;
+                        font-size: 21pt;
+                        background-color: #E2E2E2;
+                        border-bottom: 1px #C1C1C2 solid; 
+                        color: #201F20;
+                        margin: 0;
+                        font-weight: normal;
+                    }
+
+                    /* Header2 style, used for "Overview" and other sections */
+                    h2
+                    {
+                        font-size: 18pt;
+                        font-weight: normal;
+                        padding: 15px 0 5px 0;
+                        margin: 0;
+                    }
+
+                    /* Header3 style, used for sub-sections, such as project name */
+                    h3
+                    {
+                        font-weight: normal;
+                        font-size: 15pt;
+                        margin: 0;
+                        padding: 15px 0 5px 0;
+                        background-color: transparent;
+                    }
+
+                    /* Color all hyperlinks one color */
+                    a
+                    {
+                        color: #1382CE;
+                    }
+
+                    /* Table styles */ 
+                    table
+                    {
+                        border-spacing: 0 0;
+                        border-collapse: collapse;
+                        font-size: 10pt;
+                    }
+
+                    table th
+                    {
+                        background: #E7E7E8;
+                        text-align: left;
+                        text-decoration: none;
+                        font-weight: normal;
+                        padding: 3px 6px 3px 6px;
+                    }
+
+                    table td
+                    {
+                        vertical-align: top;
+                        padding: 3px 6px 5px 5px;
+                        margin: 0px;
+                        border: 1px solid #E7E7E8;
+                        background: #F7F7F8;
+                    }
+
+                    /* Local link is a style for hyperlinks that link to file:/// content, there are lots so color them as 'normal' text until the user mouse overs */
+                    .localLink
+                    {
+                        color: #1E1E1F;
+                        background: #EEEEED;
+                        text-decoration: none;
+                    }
+
+                    .localLink:hover
+                    {
+                        color: #1382CE;
+                        background: #FFFF99;
+                        text-decoration: none;
+                    }
+
+                    /* Center text, used in the over views cells that contain message level counts */ 
+                    .textCentered
+                    {
+                        text-align: center;
+                    }
+
+                    /* The message cells in message tables should take up all avaliable space */
+                    .messageCell
+                    {
+                        width: 100%;
+                    }
+
+                    /* Padding around the content after the h1 */ 
+                    #content 
+                    {
+	                    padding: 0px 12px 12px 12px; 
+                    }
+
+                    /* The overview table expands to width, with a max width of 97% */ 
+                    #overview table
+                    {
+                        width: auto;
+                        max-width: 75%; 
+                    }
+
+                    /* The messages tables are always 97% width */
+                    #messages table
+                    {
+                        width: 97%;
+                    }
+
+                    /* All Icons */
+                    .IconSuccessEncoded, .IconInfoEncoded, .IconWarningEncoded, .IconErrorEncoded
+                    {
+                        min-width:18px;
+                        min-height:18px; 
+                        background-repeat:no-repeat;
+                        background-position:center;
+                    }
+
+                    /* Success icon encoded */
+                    .IconSuccessEncoded
+                    {
+                        /* Note: Do not delete the comment below. It is used to verify the correctness of the encoded image resource below before the product is released */
+                        /* [---XsltValidateInternal-Base64EncodedImage:IconSuccess#Begin#background-image: url(data:image/png;base64,#Separator#);#End#] */
+                        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABcElEQVR4Xq2TsUsCURzHv15g8ZJcBWlyiYYgCIWcb9DFRRwMW5TA2c0/QEFwFkxxUQdxVlBwCYWOi6IhWgQhBLHJUCkhLr/BW8S7gvrAg+N+v8/v+x68Z8MGy+XSCyABQAXgBgHGALoASkIIDWSLeLBetdHryMjd5IxQPWT4rn1c/P7+xxp72Cs9m5SZ0Bq2vPnbPFafK2zDvmNHypdC0BPkLlQhxJsCAhQoZwdZU5mwxh720qGo8MzTxTTKZDPCx2HoVzp6lz0Q9tKhyx0kGs8Ny+TkWRKk8lCROwEduhyg9l/6lunOPSfmH3NUH6uQ0KHLAe7JYvJjevm+DAMGJHToKtigE+vwvIidxLamb8IBY9e+C5LiXREkfho3TSd06HJA13/oh6T51MTsfQbHrsMynQ5dDihFjiK8JJAU9AKIWTp76dCVN7HWHrajmUEGvyF9nkbAE6gLIS7kTUyuf2gscLoJrElZo/Mvj+nPz/kLTmfnEwP3tB0AAAAASUVORK5CYII=);
+                    }
+
+                    /* Information icon encoded */
+                    .IconInfoEncoded
+                    {
+                        /* Note: Do not delete the comment below. It is used to verify the correctness of the encoded image resource below before the product is released */
+                        /* [---XsltValidateInternal-Base64EncodedImage:IconInformation#Begin#background-image: url(data:image/png;base64,#Separator#);#End#] */
+                        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHElEQVR4Xs2TsUoDQRRF7wwoziokjZUKadInhdhukR9YP8DMX1hYW+QvdsXa/QHBbcXC7W0CamWTQnclFutceIQJwwaWNLlwm5k5d94M76mmaeCrrmsLYOocY12FcxZFUeozCqKqqgYA8uevv1H6VuPxcwlfk5N92KHBxfFeCSAxxswlYAW/Xr989x/mv9gkhtyMDhcAxgzRsp7flj8B/HF1RsMXq+NZMkopaHe7lbKxQUEIGbKsYNoGn969060hZBkQex/W8oRQwsQaW2o3Ago2SVcJUzAgY3N0lTCZZm+zPS8HB51gMmS1DEYyOz9acKO1D8JWTlafKIMxdhvlfdyT94Vv5h7P8Ky7nQzACmhvKq3zk3PjW9asz9D/1oigecsioooAAAAASUVORK5CYII=);
+                    }
+
+                    /* Warning icon encoded */
+                    .IconWarningEncoded
+                    {
+                        /* Note: Do not delete the comment below. It is used to verify the correctness of the encoded image resource below before the product is released */
+                        /* [---XsltValidateInternal-Base64EncodedImage:IconWarning#Begin#background-image: url(data:image/png;base64,#Separator#);#End#] */
+                        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAx0lEQVR4XpWSMQ7CMAxFf4xAyBMLCxMrO8dhaBcuwdCJS3RJBw7SA/QGTCxdWJgiQYWKXJWKIXHIlyw5lqr34tQgEOdcBsCOx5yZK3hCCKdYXneQkh4pEfqzLfu+wVDSyyzFoJjfz9NB+pAF+eizx2Vruts0k15mPgvS6GYvpVtQhB61IB/dk6AF6fS4Ben0uIX5odtFe8Q/eW1KvFeH4e8khT6+gm5B+t3juyDt7n0jpe+CANTd+oTUjN/U3yVaABnSUjFz/gFq44JaVSCXeQAAAABJRU5ErkJggg==);
+                    }
+
+                    /* Error icon encoded */
+                    .IconErrorEncoded
+                    {
+                        /* Note: Do not delete the comment below. It is used to verify the correctness of the encoded image resource below before the product is released */
+                        /* [---XsltValidateInternal-Base64EncodedImage:IconError#Begin#background-image: url(data:image/png;base64,#Separator#);#End#] */
+                        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABQElEQVR4XqWTvUoEQRCE6wYPZUA80AfwAQz23uCMjA7MDRQEIzPBVEyNTQUFIw00vcQTTMzuAh/AxEQQT8HF/3G/oGGnEUGuoNnd6qoZuqltyKEsyzVJq5I6rnUp6SjGeGhESikzzlc1eL7opfuVbrqbU1Zw9NCgtQMaZpY0eNnaaL2fHusvTK5vKu7sjSS1Y4y3QUA6K3e3Mau5UFDyMP7tYF9o8cAHZv68vipoIJg971PZIZ5HiwdvYGGvFVFHmGmZ2MxwmQYPXubPl9Up0tfoMQGetXd6mRbvhBw+boZ6WF7Mbv1+GsHRk0fQmPAH1GfmZirbCfDJ61tw3Px8/8pZsPAG4jlVhcPgZ7adwNWBB68lkRQWFiTgFlbnLY3DGGM7izIJIyT/jjIvEJw6fdJTc6krDzh6aMwMP9bvDH4ADSsa9uSWVJkAAAAASUVORK5CYII=);
+                    }
+                 </style><script type="text/javascript" language="javascript"> 
+          
+            // Startup 
+            // Hook up the the loaded event for the document/window, to linkify the document content
+            var startupFunction = function() { linkifyElement("messages"); };
+            
+            if(window.attachEvent)
+            {
+              window.attachEvent('onload', startupFunction);
+            }
+            else if (window.addEventListener) 
+            {
+              window.addEventListener('load', startupFunction, false);
+            }
+            else 
+            {
+              document.addEventListener('load', startupFunction, false);
+            } 
+            
+            // Toggles the visibility of table rows with the specified name 
+            function toggleTableRowsByName(name)
+            {
+               var allRows = document.getElementsByTagName('tr');
+               for (i=0; i < allRows.length; i++)
+               {
+                  var currentName = allRows[i].getAttribute('name');
+                  if(!!currentName && currentName.indexOf(name) == 0)
+                  {
+                      var isVisible = allRows[i].style.display == ''; 
+                      isVisible ? allRows[i].style.display = 'none' : allRows[i].style.display = '';
+                  }
+               }
+            }
+            
+            function scrollToFirstVisibleRow(name) 
+            {
+               var allRows = document.getElementsByTagName('tr');
+               for (i=0; i < allRows.length; i++)
+               {
+                  var currentName = allRows[i].getAttribute('name');
+                  var isVisible = allRows[i].style.display == ''; 
+                  if(!!currentName && currentName.indexOf(name) == 0 && isVisible)
+                  {
+                     allRows[i].scrollIntoView(true); 
+                     return true; 
+                  }
+               }
+               
+               return false;
+            }
+            
+            // Linkifies the specified text content, replaces candidate links with html links 
+            function linkify(text)
+            {
+                 if(!text || 0 === text.length)
+                 {
+                     return text; 
+                 }
+
+                 // Find http, https and ftp links and replace them with hyper links 
+                 var urlLink = /(http|https|ftp)\:\/\/[a-zA-Z0-9\-\.]+(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\/\\\+&%\$#\=~;\{\}])*/gi;
+                 
+                 return text.replace(urlLink, '<a href="$&">$&</a>') ;
+            }
+            
+            // Linkifies the specified element by ID
+            function linkifyElement(id)
+            {
+                var element = document.getElementById(id);
+                if(!!element)
+                {
+                  element.innerHTML = linkify(element.innerHTML); 
+                }
+            }
+            
+            function ToggleMessageVisibility(projectName)
+            {
+              if(!projectName || 0 === projectName.length)
+              {
+                return; 
+              }
+              
+              toggleTableRowsByName("MessageRowClass" + projectName);
+              toggleTableRowsByName('MessageRowHeaderShow' + projectName);
+              toggleTableRowsByName('MessageRowHeaderHide' + projectName); 
+            }
+            
+            function ScrollToFirstVisibleMessage(projectName)
+            {
+              if(!projectName || 0 === projectName.length)
+              {
+                return; 
+              }
+              
+              // First try the 'Show messages' row
+              if(!scrollToFirstVisibleRow('MessageRowHeaderShow' + projectName))
+              {
+                // Failed to find a visible row for 'Show messages', try an actual message row 
+                scrollToFirstVisibleRow('MessageRowClass' + projectName); 
+              }
+            }
+           </script></head><body><h1 _locID="ConversionReport">
+          Migration Report - m2server.2008</h1><div id="content"><h2 _locID="OverviewTitle">Overview</h2><div id="overview"><table><tr><th></th><th _locID="ProjectTableHeader">Project</th><th _locID="PathTableHeader">Path</th><th _locID="ErrorsTableHeader">Errors</th><th _locID="WarningsTableHeader">Warnings</th><th _locID="MessagesTableHeader">Messages</th></tr><tr><td class="IconWarningEncoded" /><td><strong><a href="#db.2008">db.2008</a></strong></td><td>db\src\db.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#db.2008Warning">6</a></td><td class="textCentered"><a href="#" onclick="ScrollToFirstVisibleMessage('db.2008'); return false;">2</a></td></tr><tr><td class="IconWarningEncoded" /><td><strong><a href="#game.2008">game.2008</a></strong></td><td>game\src\game.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#game.2008Warning">3</a></td><td class="textCentered"><a href="#" onclick="ScrollToFirstVisibleMessage('game.2008'); return false;">2</a></td></tr><tr><td class="IconWarningEncoded" /><td><strong><a href="#libgame.2008">libgame.2008</a></strong></td><td>libgame\libgame.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#libgame.2008Warning">3</a></td><td class="textCentered"><a href="#" onclick="ScrollToFirstVisibleMessage('libgame.2008'); return false;">2</a></td></tr><tr><td class="IconWarningEncoded" /><td><strong><a href="#liblua.2008">liblua.2008</a></strong></td><td>liblua\liblua.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#liblua.2008Warning">3</a></td><td class="textCentered"><a href="#" onclick="ScrollToFirstVisibleMessage('liblua.2008'); return false;">2</a></td></tr><tr><td class="IconWarningEncoded" /><td><strong><a href="#libpoly.2008">libpoly.2008</a></strong></td><td>libpoly\libpoly.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#libpoly.2008Warning">3</a></td><td class="textCentered"><a href="#" onclick="ScrollToFirstVisibleMessage('libpoly.2008'); return false;">2</a></td></tr><tr><td class="IconWarningEncoded" /><td><strong><a href="#libsql.2008">libsql.2008</a></strong></td><td>libsql\libsql.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#libsql.2008Warning">3</a></td><td class="textCentered"><a href="#" onclick="ScrollToFirstVisibleMessage('libsql.2008'); return false;">2</a></td></tr><tr><td class="IconWarningEncoded" /><td><strong><a href="#libthecore.2008">libthecore.2008</a></strong></td><td>libthecore\libthecore.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#libthecore.2008Warning">3</a></td><td class="textCentered"><a href="#" onclick="ScrollToFirstVisibleMessage('libthecore.2008'); return false;">2</a></td></tr><tr><td class="IconWarningEncoded" /><td><strong><a href="#Solution"><span _locID="OverviewSolutionSpan">Solution</span></a></strong></td><td>m2server.2008.sln</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#SolutionWarning">1</a></td><td class="textCentered"><a href="#" onclick="ScrollToFirstVisibleMessage('Solution'); return false;">2</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#Common">Common</a></strong></td><td>Common</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#db">db</a></strong></td><td>db\src\db.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#F:-[40250] Reference Serverfile By TMP4-Server-metin2-src-game-src-quest-qc.2008.vcproj">..\quest\qc.2008.vcproj</a></strong></td><td>game\src\quest\qc.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#F:-[40250] Reference Serverfile By TMP4-Server-metin2-src-libserverkey-libserverkey.vcproj">..\libserverkey\libserverkey.vcproj</a></strong></td><td>libserverkey\libserverkey.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#F:-[40250] Reference Serverfile By TMP4-Server-metin2-Tools-ServerKeyGenerator-ServerKeyGenerator.vcproj">..\ServerKeyGenerator\ServerKeyGenerator.vcproj</a></strong></td><td>..\Tools\ServerKeyGenerator\ServerKeyGenerator.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#game">game</a></strong></td><td>game\src\game.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#libgame">libgame</a></strong></td><td>libgame\libgame.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#liblua">liblua</a></strong></td><td>liblua\liblua.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#libpoly">libpoly</a></strong></td><td>libpoly\libpoly.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#Libraries">Libraries</a></strong></td><td>Libraries</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#libserverkey">libserverkey</a></strong></td><td>libserverkey\libserverkey.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#libsql">libsql</a></strong></td><td>libsql\libsql.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#libthecore">libthecore</a></strong></td><td>libthecore\libthecore.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#qc">qc</a></strong></td><td>game\src\quest\qc.2008.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#ServerKeyGenerator">ServerKeyGenerator</a></strong></td><td>..\Tools\ServerKeyGenerator\ServerKeyGenerator.vcproj</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#Servers">Servers</a></strong></td><td>Servers</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr><tr><td class="IconSuccessEncoded" /><td><strong><a href="#Utilities">Utilities</a></strong></td><td>Utilities</td><td class="textCentered"><a>0</a></td><td class="textCentered"><a>0</a></td><td class="textCentered"><a href="#">0</a></td></tr></table></div><h2 _locID="SolutionAndProjectsTitle">Solution and projects</h2><div id="messages"><a name="db.2008" /><h3>db.2008</h3><table><tr id="db.2008HeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr name="WarningRowClassdb.2008"><td class="IconWarningEncoded"><a name="db.2008Warning" /></td><td class="messageCell"><strong>db\src\db.2008.vcproj:
+        </strong><span>VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.</span></td></tr><tr name="WarningRowClassdb.2008"><td class="IconWarningEncoded"><a name="db.2008Warning" /></td><td class="messageCell"><strong>db\src\db.2008.vcproj:
+        </strong><span>MSB8012: $(TargetPath) ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\db\db.exe') does not match the Librarian's OutputFile property value '..\..\db\db.exe' ('F:\[40250] Reference Serverfile By TMP4\Server\db\db.exe') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="WarningRowClassdb.2008"><td class="IconWarningEncoded"><a name="db.2008Warning" /></td><td class="messageCell"><strong>db\src\db.2008.vcproj:
+        </strong><span>MSB8012: $(TargetName) ('db') does not match the Linker's OutputFile property value '..\..\db\db_d.exe' ('db_d') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetName) property value matches the value specified in %(Link.OutputFile).</span></td></tr><tr name="WarningRowClassdb.2008"><td class="IconWarningEncoded"><a name="db.2008Warning" /></td><td class="messageCell"><strong>db\src\db.2008.vcproj:
+        </strong><span>MSB8012: $(TargetPath) ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\db\db.exe') does not match the Linker's OutputFile property value '..\..\db\db_d.exe' ('F:\[40250] Reference Serverfile By TMP4\Server\db\db_d.exe') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).</span></td></tr><tr name="WarningRowClassdb.2008"><td class="IconWarningEncoded"><a name="db.2008Warning" /></td><td class="messageCell"><strong>db\src\db.2008.vcproj:
+        </strong><span>MSB8012: $(TargetPath) ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\db\bin\release\db.exe') does not match the Librarian's OutputFile property value '../bin/release\db.exe' ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\../bin/release\db.exe') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="WarningRowClassdb.2008"><td class="IconWarningEncoded"><a name="db.2008Warning" /></td><td class="messageCell"><strong>db\src\db.2008.vcproj:
+        </strong><span>MSB8012: $(TargetPath) ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\db\bin\release\db.exe') does not match the Linker's OutputFile property value '../bin/release\db.exe' ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\../bin/release\db.exe') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).</span></td></tr><tr name="MessageRowHeaderShowdb.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="ShowAdditionalMessages" href="#" name="db.2008Message" onclick="ToggleMessageVisibility('db.2008'); return false;">
+          Show 2 additional messages
+        </a></td></tr><tr name="MessageRowClassdb.2008" style="display: none"><td class="IconInfoEncoded"><a name="db.2008Message" /></td><td class="messageCell"><strong>db\src\db.2008.vcproj:
+        </strong><span>Converting project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\db\src\db.2008.vcproj'.</span></td></tr><tr name="MessageRowClassdb.2008" style="display: none"><td class="IconInfoEncoded"><a name="db.2008Message" /></td><td class="messageCell"><strong>db\src\db.2008.vcproj:
+        </strong><span>Done converting to new project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\db\src\db.2008.vcxproj'.</span></td></tr><tr style="display: none" name="MessageRowHeaderHidedb.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="HideAdditionalMessages" href="#" name="db.2008Message" onclick="ToggleMessageVisibility('db.2008'); return false;">
+          Hide 2 additional messages
+        </a></td></tr></table><a name="game.2008" /><h3>game.2008</h3><table><tr id="game.2008HeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr name="WarningRowClassgame.2008"><td class="IconWarningEncoded"><a name="game.2008Warning" /></td><td class="messageCell"><strong>game\src\game.2008.vcproj:
+        </strong><span>VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.</span></td></tr><tr name="WarningRowClassgame.2008"><td class="IconWarningEncoded"><a name="game.2008Warning" /></td><td class="messageCell"><strong>game\src\game.2008.vcproj:
+        </strong><span>MSB8012: $(TargetName) ('game') does not match the Linker's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\game\src\..\game_d.exe' ('game_d') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetName) property value matches the value specified in %(Link.OutputFile).</span></td></tr><tr name="WarningRowClassgame.2008"><td class="IconWarningEncoded"><a name="game.2008Warning" /></td><td class="messageCell"><strong>game\src\game.2008.vcproj:
+        </strong><span>MSB8012: $(TargetPath) ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\game\game.exe') does not match the Linker's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\game\src\..\game_d.exe' ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\game\game_d.exe') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).</span></td></tr><tr name="MessageRowHeaderShowgame.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="ShowAdditionalMessages" href="#" name="game.2008Message" onclick="ToggleMessageVisibility('game.2008'); return false;">
+          Show 2 additional messages
+        </a></td></tr><tr name="MessageRowClassgame.2008" style="display: none"><td class="IconInfoEncoded"><a name="game.2008Message" /></td><td class="messageCell"><strong>game\src\game.2008.vcproj:
+        </strong><span>Converting project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\game\src\game.2008.vcproj'.</span></td></tr><tr name="MessageRowClassgame.2008" style="display: none"><td class="IconInfoEncoded"><a name="game.2008Message" /></td><td class="messageCell"><strong>game\src\game.2008.vcproj:
+        </strong><span>Done converting to new project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\game\src\game.2008.vcxproj'.</span></td></tr><tr style="display: none" name="MessageRowHeaderHidegame.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="HideAdditionalMessages" href="#" name="game.2008Message" onclick="ToggleMessageVisibility('game.2008'); return false;">
+          Hide 2 additional messages
+        </a></td></tr></table><a name="libgame.2008" /><h3>libgame.2008</h3><table><tr id="libgame.2008HeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr name="WarningRowClasslibgame.2008"><td class="IconWarningEncoded"><a name="libgame.2008Warning" /></td><td class="messageCell"><strong>libgame\libgame.2008.vcproj:
+        </strong><span>VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.</span></td></tr><tr name="WarningRowClasslibgame.2008"><td class="IconWarningEncoded"><a name="libgame.2008Warning" /></td><td class="messageCell"><strong>libgame\libgame.2008.vcproj:
+        </strong><span>MSB8012: $(TargetName) ('libgame') does not match the Librarian's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libgame\lib\libgame_d.lib' ('libgame_d') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetName) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="WarningRowClasslibgame.2008"><td class="IconWarningEncoded"><a name="libgame.2008Warning" /></td><td class="messageCell"><strong>libgame\libgame.2008.vcproj:
+        </strong><span>MSB8012: $(TargetPath) ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libgame\lib\libgame.lib') does not match the Librarian's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libgame\lib\libgame_d.lib' ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libgame\lib\libgame_d.lib') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="MessageRowHeaderShowlibgame.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="ShowAdditionalMessages" href="#" name="libgame.2008Message" onclick="ToggleMessageVisibility('libgame.2008'); return false;">
+          Show 2 additional messages
+        </a></td></tr><tr name="MessageRowClasslibgame.2008" style="display: none"><td class="IconInfoEncoded"><a name="libgame.2008Message" /></td><td class="messageCell"><strong>libgame\libgame.2008.vcproj:
+        </strong><span>Converting project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libgame\libgame.2008.vcproj'.</span></td></tr><tr name="MessageRowClasslibgame.2008" style="display: none"><td class="IconInfoEncoded"><a name="libgame.2008Message" /></td><td class="messageCell"><strong>libgame\libgame.2008.vcproj:
+        </strong><span>Done converting to new project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libgame\libgame.2008.vcxproj'.</span></td></tr><tr style="display: none" name="MessageRowHeaderHidelibgame.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="HideAdditionalMessages" href="#" name="libgame.2008Message" onclick="ToggleMessageVisibility('libgame.2008'); return false;">
+          Hide 2 additional messages
+        </a></td></tr></table><a name="liblua.2008" /><h3>liblua.2008</h3><table><tr id="liblua.2008HeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr name="WarningRowClassliblua.2008"><td class="IconWarningEncoded"><a name="liblua.2008Warning" /></td><td class="messageCell"><strong>liblua\liblua.2008.vcproj:
+        </strong><span>VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.</span></td></tr><tr name="WarningRowClassliblua.2008"><td class="IconWarningEncoded"><a name="liblua.2008Warning" /></td><td class="messageCell"><strong>liblua\liblua.2008.vcproj:
+        </strong><span>MSB8012: $(TargetName) ('liblua') does not match the Librarian's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\liblua\lib\liblua_d.lib' ('liblua_d') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetName) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="WarningRowClassliblua.2008"><td class="IconWarningEncoded"><a name="liblua.2008Warning" /></td><td class="messageCell"><strong>liblua\liblua.2008.vcproj:
+        </strong><span>MSB8012: $(TargetPath) ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\liblua\lib\liblua.lib') does not match the Librarian's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\liblua\lib\liblua_d.lib' ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\liblua\lib\liblua_d.lib') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="MessageRowHeaderShowliblua.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="ShowAdditionalMessages" href="#" name="liblua.2008Message" onclick="ToggleMessageVisibility('liblua.2008'); return false;">
+          Show 2 additional messages
+        </a></td></tr><tr name="MessageRowClassliblua.2008" style="display: none"><td class="IconInfoEncoded"><a name="liblua.2008Message" /></td><td class="messageCell"><strong>liblua\liblua.2008.vcproj:
+        </strong><span>Converting project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\liblua\liblua.2008.vcproj'.</span></td></tr><tr name="MessageRowClassliblua.2008" style="display: none"><td class="IconInfoEncoded"><a name="liblua.2008Message" /></td><td class="messageCell"><strong>liblua\liblua.2008.vcproj:
+        </strong><span>Done converting to new project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\liblua\liblua.2008.vcxproj'.</span></td></tr><tr style="display: none" name="MessageRowHeaderHideliblua.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="HideAdditionalMessages" href="#" name="liblua.2008Message" onclick="ToggleMessageVisibility('liblua.2008'); return false;">
+          Hide 2 additional messages
+        </a></td></tr></table><a name="libpoly.2008" /><h3>libpoly.2008</h3><table><tr id="libpoly.2008HeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr name="WarningRowClasslibpoly.2008"><td class="IconWarningEncoded"><a name="libpoly.2008Warning" /></td><td class="messageCell"><strong>libpoly\libpoly.2008.vcproj:
+        </strong><span>VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.</span></td></tr><tr name="WarningRowClasslibpoly.2008"><td class="IconWarningEncoded"><a name="libpoly.2008Warning" /></td><td class="messageCell"><strong>libpoly\libpoly.2008.vcproj:
+        </strong><span>MSB8012: $(TargetName) ('libpoly') does not match the Librarian's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libpoly\libpoly_d.lib' ('libpoly_d') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetName) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="WarningRowClasslibpoly.2008"><td class="IconWarningEncoded"><a name="libpoly.2008Warning" /></td><td class="messageCell"><strong>libpoly\libpoly.2008.vcproj:
+        </strong><span>MSB8012: $(TargetPath) ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libpoly\libpoly.lib') does not match the Librarian's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libpoly\libpoly_d.lib' ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libpoly\libpoly_d.lib') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="MessageRowHeaderShowlibpoly.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="ShowAdditionalMessages" href="#" name="libpoly.2008Message" onclick="ToggleMessageVisibility('libpoly.2008'); return false;">
+          Show 2 additional messages
+        </a></td></tr><tr name="MessageRowClasslibpoly.2008" style="display: none"><td class="IconInfoEncoded"><a name="libpoly.2008Message" /></td><td class="messageCell"><strong>libpoly\libpoly.2008.vcproj:
+        </strong><span>Converting project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libpoly\libpoly.2008.vcproj'.</span></td></tr><tr name="MessageRowClasslibpoly.2008" style="display: none"><td class="IconInfoEncoded"><a name="libpoly.2008Message" /></td><td class="messageCell"><strong>libpoly\libpoly.2008.vcproj:
+        </strong><span>Done converting to new project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libpoly\libpoly.2008.vcxproj'.</span></td></tr><tr style="display: none" name="MessageRowHeaderHidelibpoly.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="HideAdditionalMessages" href="#" name="libpoly.2008Message" onclick="ToggleMessageVisibility('libpoly.2008'); return false;">
+          Hide 2 additional messages
+        </a></td></tr></table><a name="libsql.2008" /><h3>libsql.2008</h3><table><tr id="libsql.2008HeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr name="WarningRowClasslibsql.2008"><td class="IconWarningEncoded"><a name="libsql.2008Warning" /></td><td class="messageCell"><strong>libsql\libsql.2008.vcproj:
+        </strong><span>VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.</span></td></tr><tr name="WarningRowClasslibsql.2008"><td class="IconWarningEncoded"><a name="libsql.2008Warning" /></td><td class="messageCell"><strong>libsql\libsql.2008.vcproj:
+        </strong><span>MSB8012: $(TargetName) ('libsql') does not match the Librarian's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libsql\libsql_d.lib' ('libsql_d') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetName) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="WarningRowClasslibsql.2008"><td class="IconWarningEncoded"><a name="libsql.2008Warning" /></td><td class="messageCell"><strong>libsql\libsql.2008.vcproj:
+        </strong><span>MSB8012: $(TargetPath) ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libsql\libsql.lib') does not match the Librarian's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libsql\libsql_d.lib' ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libsql\libsql_d.lib') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="MessageRowHeaderShowlibsql.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="ShowAdditionalMessages" href="#" name="libsql.2008Message" onclick="ToggleMessageVisibility('libsql.2008'); return false;">
+          Show 2 additional messages
+        </a></td></tr><tr name="MessageRowClasslibsql.2008" style="display: none"><td class="IconInfoEncoded"><a name="libsql.2008Message" /></td><td class="messageCell"><strong>libsql\libsql.2008.vcproj:
+        </strong><span>Converting project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libsql\libsql.2008.vcproj'.</span></td></tr><tr name="MessageRowClasslibsql.2008" style="display: none"><td class="IconInfoEncoded"><a name="libsql.2008Message" /></td><td class="messageCell"><strong>libsql\libsql.2008.vcproj:
+        </strong><span>Done converting to new project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libsql\libsql.2008.vcxproj'.</span></td></tr><tr style="display: none" name="MessageRowHeaderHidelibsql.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="HideAdditionalMessages" href="#" name="libsql.2008Message" onclick="ToggleMessageVisibility('libsql.2008'); return false;">
+          Hide 2 additional messages
+        </a></td></tr></table><a name="libthecore.2008" /><h3>libthecore.2008</h3><table><tr id="libthecore.2008HeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr name="WarningRowClasslibthecore.2008"><td class="IconWarningEncoded"><a name="libthecore.2008Warning" /></td><td class="messageCell"><strong>libthecore\libthecore.2008.vcproj:
+        </strong><span>VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.</span></td></tr><tr name="WarningRowClasslibthecore.2008"><td class="IconWarningEncoded"><a name="libthecore.2008Warning" /></td><td class="messageCell"><strong>libthecore\libthecore.2008.vcproj:
+        </strong><span>MSB8012: $(TargetName) ('libthecore') does not match the Librarian's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libthecore\lib\libthecore_d.lib' ('libthecore_d') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetName) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="WarningRowClasslibthecore.2008"><td class="IconWarningEncoded"><a name="libthecore.2008Warning" /></td><td class="messageCell"><strong>libthecore\libthecore.2008.vcproj:
+        </strong><span>MSB8012: $(TargetPath) ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libthecore\lib\libthecore.lib') does not match the Librarian's OutputFile property value 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libthecore\lib\libthecore_d.lib' ('F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libthecore\lib\libthecore_d.lib') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Lib.OutputFile).</span></td></tr><tr name="MessageRowHeaderShowlibthecore.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="ShowAdditionalMessages" href="#" name="libthecore.2008Message" onclick="ToggleMessageVisibility('libthecore.2008'); return false;">
+          Show 2 additional messages
+        </a></td></tr><tr name="MessageRowClasslibthecore.2008" style="display: none"><td class="IconInfoEncoded"><a name="libthecore.2008Message" /></td><td class="messageCell"><strong>libthecore\libthecore.2008.vcproj:
+        </strong><span>Converting project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libthecore\libthecore.2008.vcproj'.</span></td></tr><tr name="MessageRowClasslibthecore.2008" style="display: none"><td class="IconInfoEncoded"><a name="libthecore.2008Message" /></td><td class="messageCell"><strong>libthecore\libthecore.2008.vcproj:
+        </strong><span>Done converting to new project file 'F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\libthecore\libthecore.2008.vcxproj'.</span></td></tr><tr style="display: none" name="MessageRowHeaderHidelibthecore.2008"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="HideAdditionalMessages" href="#" name="libthecore.2008Message" onclick="ToggleMessageVisibility('libthecore.2008'); return false;">
+          Hide 2 additional messages
+        </a></td></tr></table><a name="Solution" /><h3 _locID="ProjectDisplayNameHeader">Solution</h3><table><tr id="SolutionHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr name="WarningRowClassSolution"><td class="IconWarningEncoded"><a name="SolutionWarning" /></td><td class="messageCell"><strong>m2server.2008.sln:
+        </strong><span>Visual Studio needs to make non-functional changes to this project in order to enable the project to open in released versions of Visual Studio newer than Visual Studio 2010 SP1 without impacting project behavior.</span></td></tr><tr name="MessageRowHeaderShowSolution"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="ShowAdditionalMessages" href="#" name="SolutionMessage" onclick="ToggleMessageVisibility('Solution'); return false;">
+          Show 2 additional messages
+        </a></td></tr><tr name="MessageRowClassSolution" style="display: none"><td class="IconInfoEncoded"><a name="SolutionMessage" /></td><td class="messageCell"><strong>m2server.2008.sln:
+        </strong><span>File successfully backed up as F:\[40250] Reference Serverfile By TMP4\Server\metin2\src\Backup\m2server.2008.sln</span></td></tr><tr name="MessageRowClassSolution" style="display: none"><td class="IconInfoEncoded"><a name="SolutionMessage" /></td><td class="messageCell"><strong>m2server.2008.sln:
+        </strong><span>Solution migrated successfully</span></td></tr><tr style="display: none" name="MessageRowHeaderHideSolution"><td class="IconInfoEncoded" /><td class="messageCell"><a _locID="HideAdditionalMessages" href="#" name="SolutionMessage" onclick="ToggleMessageVisibility('Solution'); return false;">
+          Hide 2 additional messages
+        </a></td></tr></table><a name="Common" /><h3>Common</h3><table><tr id="CommonHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">Common logged no messages.
+                  </td></tr></table><a name="db" /><h3>db</h3><table><tr id="dbHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">db logged no messages.
+                  </td></tr></table><a name="F:-[40250] Reference Serverfile By TMP4-Server-metin2-src-game-src-quest-qc.2008.vcproj" /><h3>..\quest\qc.2008.vcproj</h3><table><tr id="F:-[40250] Reference Serverfile By TMP4-Server-metin2-src-game-src-quest-qc.2008.vcprojHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">..\quest\qc.2008.vcproj logged no messages.
+                  </td></tr></table><a name="F:-[40250] Reference Serverfile By TMP4-Server-metin2-src-libserverkey-libserverkey.vcproj" /><h3>..\libserverkey\libserverkey.vcproj</h3><table><tr id="F:-[40250] Reference Serverfile By TMP4-Server-metin2-src-libserverkey-libserverkey.vcprojHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">..\libserverkey\libserverkey.vcproj logged no messages.
+                  </td></tr></table><a name="F:-[40250] Reference Serverfile By TMP4-Server-metin2-Tools-ServerKeyGenerator-ServerKeyGenerator.vcproj" /><h3>..\ServerKeyGenerator\ServerKeyGenerator.vcproj</h3><table><tr id="F:-[40250] Reference Serverfile By TMP4-Server-metin2-Tools-ServerKeyGenerator-ServerKeyGenerator.vcprojHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">..\ServerKeyGenerator\ServerKeyGenerator.vcproj logged no messages.
+                  </td></tr></table><a name="game" /><h3>game</h3><table><tr id="gameHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">game logged no messages.
+                  </td></tr></table><a name="libgame" /><h3>libgame</h3><table><tr id="libgameHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">libgame logged no messages.
+                  </td></tr></table><a name="liblua" /><h3>liblua</h3><table><tr id="libluaHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">liblua logged no messages.
+                  </td></tr></table><a name="libpoly" /><h3>libpoly</h3><table><tr id="libpolyHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">libpoly logged no messages.
+                  </td></tr></table><a name="Libraries" /><h3>Libraries</h3><table><tr id="LibrariesHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">Libraries logged no messages.
+                  </td></tr></table><a name="libserverkey" /><h3>libserverkey</h3><table><tr id="libserverkeyHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">libserverkey logged no messages.
+                  </td></tr></table><a name="libsql" /><h3>libsql</h3><table><tr id="libsqlHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">libsql logged no messages.
+                  </td></tr></table><a name="libthecore" /><h3>libthecore</h3><table><tr id="libthecoreHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">libthecore logged no messages.
+                  </td></tr></table><a name="qc" /><h3>qc</h3><table><tr id="qcHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">qc logged no messages.
+                  </td></tr></table><a name="ServerKeyGenerator" /><h3>ServerKeyGenerator</h3><table><tr id="ServerKeyGeneratorHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">ServerKeyGenerator logged no messages.
+                  </td></tr></table><a name="Servers" /><h3>Servers</h3><table><tr id="ServersHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">Servers logged no messages.
+                  </td></tr></table><a name="Utilities" /><h3>Utilities</h3><table><tr id="UtilitiesHeaderRow"><th></th><th class="messageCell" _locID="MessageTableHeader">Message</th></tr><tr><td class="IconInfoEncoded" /><td class="messageCell" _locID="NoMessagesRow">Utilities logged no messages.
+                  </td></tr></table></div></div></body></html>
