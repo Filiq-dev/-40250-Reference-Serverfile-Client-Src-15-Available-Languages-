@@ -81,12 +81,6 @@
 #include <execinfo.h>
 #endif
 
-// �����쿡�� �׽�Ʈ�� ���� �׻� ����Ű üũ
-#ifdef _WIN32
-	//#define _USE_SERVER_KEY_
-#endif
-#include "check_server.h"
-
 extern void WriteVersion();
 //extern const char * _malloc_options;
 #if defined(__FreeBSD__) && defined(DEBUG_ALLOC)
@@ -346,87 +340,6 @@ void heartbeat(LPHEART ht, int pulse)
 	}
 }
 
-static bool g_isInvalidServer = false;
-
-bool Metin2Server_IsInvalid()
-{
-	return g_isInvalidServer;
-}
-
-void Metin2Server_Check()
-{
-#ifdef _SERVER_CHECK_
-
-#ifdef _USE_SERVER_KEY_
-	if (false == CheckServer::CheckIp(g_szPublicIP))
-	{
-#ifdef _WIN32
-		fprintf(stderr, "check ip failed\n");
-#endif
-		g_isInvalidServer = true;
-	}
-	return;
-#endif
-
-	if (LC_IsEurope() || test_server)
-		return;
-
-
-	// ����� ip
-	if (strncmp (g_szPublicIP, "189.112.1", 9) == 0)
-	{
-		return;
-	}
-
-	// ĳ���� ip
-	if (strncmp (g_szPublicIP, "74.200.6", 8) == 0)
-	{
-		return;
-	}
-
-	return;
-
-	static const size_t CheckServerListSize = 1;
-	static const char* CheckServerList[] = { "202.31.178.251"};
-	static const int CheckServerPort = 7120;
-
-	socket_t sockConnector = INVALID_SOCKET;
-
-	for (size_t i = 0 ; i < CheckServerListSize ; i++)
-	{
-		sockConnector = socket_connect( CheckServerList[i], CheckServerPort );
-
-		if (0 < sockConnector)
-			break;
-	}
-
-	if (0 > sockConnector)
-	{
-		if (true != LC_IsEurope()) // ������ ������ ���� ���ϸ� ������ ������ ����
-			g_isInvalidServer = true;
-
-		return;
-	}
-
-	char buf[256] = { 0, };
-
-	socket_read(sockConnector, buf, sizeof(buf) - 1);
-
-	sys_log(0, "recv[%s]", buf);
-	
-	if (strncmp(buf, "OK", 2) == 0)
-		g_isInvalidServer = false;
-	else if (strncmp(buf, "CK", 2) == 0)
-		g_isInvalidServer = true;
-
-	socket_close(sockConnector);
-#else
-	g_isInvalidServer = false;
-	return;
-#endif
-	
-}
-
 static void CleanUpForEarlyExit() {
 	CancelReloadSpamEvent();
 }
@@ -529,15 +442,6 @@ int main(int argc, char **argv)
 	Blend_Item_init();
 	ani_init();
 	PanamaLoad();
-
-	Metin2Server_Check();
-
-#if defined(_WIN32) && defined(_USE_SERVER_KEY_)
-	if (CheckServer::IsFail())
-	{
-		return 1;
-	}
-#endif
 
 	if ( g_bTrafficProfileOn )
 		TrafficProfiler::instance().Initialize( TRAFFIC_PROFILE_FLUSH_CYCLE, "ProfileLog" );
@@ -961,12 +865,6 @@ int idle()
 		memset(&thecore_profiler[0], 0, sizeof(thecore_profiler));
 		memset(&s_dwProfiler[0], 0, sizeof(s_dwProfiler));
 	}
-#ifdef _USE_SERVER_KEY_
-	if (Metin2Server_IsInvalid() && 0 == (thecore_random() % 7146))
-	{
-		return 0; // shutdown
-	}
-#endif
 
 #ifdef __WIN32__
 	if (_kbhit()) {

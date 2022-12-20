@@ -16,7 +16,7 @@ $(shell if [ ! -d $(OBJDIR) ]; then mkdir $(OBJDIR); fi)
 # Standard Setting
 LIBS = -pthread -lm -lmd
 # Removed -fno-rtti 
-CFLAGS = -g -Wall -w -O2 -m32 -pipe -std=c++2b -fexceptions -D_THREAD_SAFE -DNDEBUG # -D_USE_SERVER_KEY_
+CFLAGS = -g -Wall -w -O2 -m32 -pipe -std=c++2b -fexceptions -D_THREAD_SAFE -DNDEBUG
 CFLAGS += -mtune=i686 -fstack-protector-all
 
 # Boost
@@ -55,10 +55,9 @@ LIBS += -lmysqlclient -lz
 # Project Library
 INCDIR += -I../../liblua/include
 INCDIR += -I/usr/local/include
-INCDIR += -I../../libserverkey
-LIBDIR += -L../../libthecore/lib -L../../libpoly -L../../libsql -L../../libgame/lib -L../../liblua/lib -L../../libserverkey
+LIBDIR += -L../../libthecore/lib -L../../libpoly -L../../libsql -L../../libgame/lib -L../../liblua/lib
 LIBDIR += -L/usr/local/lib
-LIBS += -lthecore -lpoly -llua -llualib -lsql -lgame -lserverkey
+LIBS += -lthecore -lpoly -llua -llualib -lsql -lgame
 USE_STACKTRACE = 0
 ifeq ($(USE_STACKTRACE), 1)
 LIBS += /usr/local/lib/libexecinfo.a

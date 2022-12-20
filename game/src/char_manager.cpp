@@ -113,7 +113,7 @@ void CHARACTER_MANAGER::DestroyCharacter(LPCHARACTER ch, const char* file, size_
 		return; // prevent duplicated destrunction
 	}
 
-	// ´øÀü¿¡ ¼Ò¼ÓµÈ ¸ó½ºÅÍ´Â ´øÀü¿¡¼­µµ »èÁ¦ÇÏµµ·Ï.
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¼Óµï¿½ ï¿½ï¿½ï¿½Í´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½.
 	if (ch->IsNPC() && !ch->IsPet() && ch->GetRider() == NULL)
 	{
 		if (ch->GetDungeon())
@@ -229,7 +229,7 @@ LPCHARACTER CHARACTER_MANAGER::FindPC(const char * name)
 
 LPCHARACTER CHARACTER_MANAGER::SpawnMobRandomPosition(DWORD dwVnum, long lMapIndex)
 {
-	// ¿Ö±¸ ½ºÆùÇÒÁö¸»Áö¸¦ °áÁ¤ÇÒ ¼ö ÀÖ°ÔÇÔ
+	// ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö°ï¿½ï¿½ï¿½
 	{
 		if (dwVnum == 5001 && !quest::CQuestManager::instance().GetEventFlag("japan_regen"))
 		{
@@ -238,7 +238,7 @@ LPCHARACTER CHARACTER_MANAGER::SpawnMobRandomPosition(DWORD dwVnum, long lMapInd
 		}
 	}
 
-	// ÇØÅÂ¸¦ ½ºÆùÇÒÁö ¸»Áö¸¦ °áÁ¤ÇÒ ¼ö ÀÖ°Ô ÇÔ
+	// ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½
 	{
 		if (dwVnum == 5002 && !quest::CQuestManager::instance().GetEventFlag("newyear_mob"))
 		{
@@ -247,7 +247,7 @@ LPCHARACTER CHARACTER_MANAGER::SpawnMobRandomPosition(DWORD dwVnum, long lMapInd
 		}
 	}
 
-	// ±¤º¹Àý ÀÌº¥Æ® 
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ® 
 	{
 		if (dwVnum == 5004 && !quest::CQuestManager::instance().GetEventFlag("independence_day"))
 		{
@@ -447,7 +447,7 @@ LPCHARACTER CHARACTER_MANAGER::SpawnMobRange(DWORD dwVnum, long lMapIndex, int s
 	if (!pkMob)
 		return NULL;
 
-	if (pkMob->m_table.bType == CHAR_TYPE_STONE)	// µ¹Àº ¹«Á¶°Ç SPAWN ¸ð¼ÇÀÌ ÀÖ´Ù.
+	if (pkMob->m_table.bType == CHAR_TYPE_STONE)	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ SPAWN ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.
 		bSpawnMotion = true;
 
 	int i = 16;
@@ -511,7 +511,7 @@ bool CHARACTER_MANAGER::SpawnMoveGroup(DWORD dwVnum, long lMapIndex, int sx, int
 
 		if (!tch)
 		{
-			if (i == 0)	// ¸ø¸¸µç ¸ó½ºÅÍ°¡ ´ëÀåÀÏ °æ¿ì¿¡´Â ±×³É ½ÇÆÐ
+			if (i == 0)	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½
 				return false;
 
 			continue;
@@ -595,7 +595,7 @@ LPCHARACTER CHARACTER_MANAGER::SpawnGroup(DWORD dwVnum, long lMapIndex, int sx, 
 
 		if (!tch)
 		{
-			if (i == 0)	// ¸ø¸¸µç ¸ó½ºÅÍ°¡ ´ëÀåÀÏ °æ¿ì¿¡´Â ±×³É ½ÇÆÐ
+			if (i == 0)	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½
 				return NULL;
 
 			continue;
@@ -648,11 +648,11 @@ void CHARACTER_MANAGER::Update(int iPulse)
 
 	BeginPendingDestroy();
 
-	// PC Ä³¸¯ÅÍ ¾÷µ¥ÀÌÆ®
+	// PC Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	{
 		if (!m_map_pkPCChr.empty())
 		{
-			// ÄÁÅ×ÀÌ³Ê º¹»ç
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½
 			CHARACTER_VECTOR v;
 			v.reserve(m_map_pkPCChr.size());
 			transform(m_map_pkPCChr.begin(), m_map_pkPCChr.end(), back_inserter(v), boost::bind(&NAME_MAP::value_type::second, _1));
@@ -668,7 +668,7 @@ void CHARACTER_MANAGER::Update(int iPulse)
 		}
 	}
 
-	// ¸ó½ºÅÍ ¾÷µ¥ÀÌÆ®
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	{
 		if (!m_set_pkChrState.empty())
 		{
@@ -679,7 +679,7 @@ void CHARACTER_MANAGER::Update(int iPulse)
 		}
 	}
 
-	// »êÅ¸ µû·Î ¾÷µ¥ÀÌÆ®
+	// ï¿½ï¿½Å¸ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	{
 		CharacterVectorInteractor i;
 
@@ -689,29 +689,20 @@ void CHARACTER_MANAGER::Update(int iPulse)
 		}
 	}
 
-	// 1½Ã°£¿¡ ÇÑ¹ø¾¿ ¸÷ »ç³É °³¼ö ±â·Ï 
+	// 1ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 
 	if (0 == (iPulse % PASSES_PER_SEC(3600)))
 	{
 		for (itertype(m_map_dwMobKillCount) it = m_map_dwMobKillCount.begin(); it != m_map_dwMobKillCount.end(); ++it)
 			DBManager::instance().SendMoneyLog(MONEY_LOG_MONSTER_KILL, it->first, it->second);
 
-#ifdef _USE_SERVER_KEY_
-		extern bool Metin2Server_IsInvalid();
-		extern bool g_bShutdown;
-		if (Metin2Server_IsInvalid())
-		{
-			g_bShutdown = true;
-		}
-#endif
-
 		m_map_dwMobKillCount.clear();
 	}
 
-	// Å×½ºÆ® ¼­¹ö¿¡¼­´Â 60ÃÊ¸¶´Ù Ä³¸¯ÅÍ °³¼ö¸¦ ¼¾´Ù
+	// ï¿½×½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 60ï¿½Ê¸ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (test_server && 0 == (iPulse % PASSES_PER_SEC(60)))
 		sys_log(0, "CHARACTER COUNT vid %zu pid %zu", m_map_pkChrByVID.size(), m_map_pkChrByPID.size());
 
-	// Áö¿¬µÈ DestroyCharacter ÇÏ±â
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DestroyCharacter ï¿½Ï±ï¿½
 	FlushPendingDestroy();
 }
 
@@ -828,7 +819,7 @@ void CHARACTER_MANAGER::RegisterRaceNumMap(LPCHARACTER ch)
 {
 	DWORD dwVnum = ch->GetRaceNum();
 
-	if (m_set_dwRegisteredRaceNum.find(dwVnum) != m_set_dwRegisteredRaceNum.end()) // µî·ÏµÈ ¹øÈ£ ÀÌ¸é
+	if (m_set_dwRegisteredRaceNum.find(dwVnum) != m_set_dwRegisteredRaceNum.end()) // ï¿½ï¿½Ïµï¿½ ï¿½ï¿½È£ ï¿½Ì¸ï¿½
 	{
 		sys_log(0, "RegisterRaceNumMap %s %u", ch->GetName(), dwVnum);
 		m_map_pkChrByRaceNum[dwVnum].insert(ch);
@@ -852,7 +843,7 @@ bool CHARACTER_MANAGER::GetCharactersByRaceNum(DWORD dwRaceNum, CharacterVectorI
 	if (it == m_map_pkChrByRaceNum.end())
 		return false;
 
-	// ÄÁÅ×ÀÌ³Ê º¹»ç
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½
 	i = it->second;
 	return true;
 }
@@ -1049,8 +1040,8 @@ void CHARACTER_MANAGER::SendScriptToMap(long lMapIndex, const std::string & s)
 
 bool CHARACTER_MANAGER::BeginPendingDestroy()
 {
-	// Begin ÀÌ ÈÄ¿¡ BeginÀ» ¶Ç ÇÏ´Â °æ¿ì¿¡ Flush ÇÏÁö ¾Ê´Â ±â´É Áö¿øÀ» À§ÇØ
-	// ÀÌ¹Ì ½ÃÀÛµÇ¾îÀÖÀ¸¸é false ¸®ÅÏ Ã³¸®
+	// Begin ï¿½ï¿½ ï¿½Ä¿ï¿½ Beginï¿½ï¿½ ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ì¿¡ Flush ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	// ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ÛµÇ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ false ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 	if (m_bUsePendingDestroy)
 		return false;
 
@@ -1062,7 +1053,7 @@ void CHARACTER_MANAGER::FlushPendingDestroy()
 {
 	using namespace std;
 
-	m_bUsePendingDestroy = false; // ÇÃ·¡±×¸¦ ¸ÕÀú ¼³Á¤ÇØ¾ß ½ÇÁ¦ Destroy Ã³¸®°¡ µÊ
+	m_bUsePendingDestroy = false; // ï¿½Ã·ï¿½ï¿½×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½ï¿½ï¿½ï¿½ Destroy Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 
 	if (!m_set_pkChrPendingDestroy.empty())
 	{

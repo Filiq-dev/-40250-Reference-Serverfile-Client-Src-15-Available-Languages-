@@ -1130,12 +1130,6 @@ void config_init(const string& st_localeServiceName)
 			continue;
 		}
 
-		TOKEN("server_key")
-		{
-			CheckServer::AddServerKey(value_string);
-			continue;
-		}
-
 #ifdef ENABLE_PROXY_IP
 		TOKEN("proxy_ip")
 		{
